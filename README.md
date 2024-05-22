@@ -17,3 +17,4 @@
 
 # 运行：
 python manage.py 0.0.0.0:8000 （目录：与manage.py同级）
+然后访问 http://127.0.0.1:8000/test-mainwindow/
