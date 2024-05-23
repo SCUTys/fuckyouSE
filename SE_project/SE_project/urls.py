@@ -15,10 +15,32 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import *
-from app_mainwindow import views
+from app_mainwindow import views as app_mainwindow_views
+from compare import views as compare_views
+from conditionfilter import views as conditionfilter_views
+from detail import views as detail_views
+from latestgood import views as latestgood_views
+from login import views as login_views
+from recenthot import views as recenthot_views
+from salerank import views as salerank_views
+from searchresult import views as searchresult_views
+from urlsearch import views as urlsearch_views
+from latesthot import views as latesthot_views
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("test-mainwindow/", views.test_mainwindow),
+    path("test-mainwindow/", app_mainwindow_views.test_mainwindow),
+    path("/compare/", compare_views.compare_mainwindow,name="compare"),
+    path("/conditionfilter/", conditionfilter_views.conditionfilter_window,name="conditionfilter"),
+    path("/detail/", detail_views.detail_window,name="detail"),
+    path("/latestgood/", latestgood_views.latestgood_window,name="latestgood"),
+    path("/login/", login_views.login_window,name="login"),
+    path("/recenthot/", recenthot_views.recenthot_window,name="recenthot"),
+    path("/salerank/", salerank_views.salerank_window,name="salerank"),
+    path("/searchresult/", searchresult_views.searchresult_window,name="searchresult"),
+    path("/urlsearch/", urlsearch_views.urlsearch_window,name="urlsearch"),
+    path("/latesthot/", latesthot_views.latesthot_window,name="latesthot")
+
     # path('',include('SE_project.urls'))
 ]

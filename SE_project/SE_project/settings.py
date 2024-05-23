@@ -37,7 +37,22 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "app_mainwindow.apps.AppMainwindowConfig"
+
+    "app_mainwindow.apps.AppMainwindowConfig",
+
+    ## Add the following apps in the mainwindow
+    "compare.apps.CompareConfig",
+    "conditionfilter.apps.ConditionfilterConfig",
+    "detail.apps.DetailConfig",
+    "latestgood.apps.LatestgoodConfig",
+    "login.apps.LoginConfig",
+    "recenthot.apps.RecenthotConfig",
+    "searchresult.apps.SearchresultConfig",
+    "urlsearch.apps.UrlsearchConfig",
+    "salerank.apps.SalerankConfig",
+
+
+
 
 ]
 
