@@ -1,10 +1,245 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=dege" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testcompare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="style copy.css">  
 </head>
+
 <body>
-商品对比页面
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+        <div class="container">
+
+            <a href="#" class="navbar-brand">钢铁直男の5G手机爬虫乐园</a>
+
+            <!-- Toggler Button -->
+            <button class="navbar-toggler btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Collapse -->
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Navigation Items -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">返回上一页面</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">返回主页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">登录/注册</a>
+                    </li>
+
+                    <!-- Dropdown Menu for Small Screens -->
+                    <!-- <li class="dropdown"> -->
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">返回上一页面</a></li>
+                            <li><a class="dropdown-item" href="#">返回主页</a></li>
+                            <li><a class="dropdown-item" href="#">登录/注册</a></li>
+                        </ul>
+                    <!-- </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container" style="max-width: 1200px;">
+        <table class="table table-hover table-bordered table-responsive">
+            <thead class="self-fixed">
+                <tr>
+                    <th scope="col" class="col-lg-1">#</th>
+                    <th scope="col" class="col-lg-2">
+                        华为mate70ultra
+                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>
+                    </th>
+                    <th scope="col" class="col-lg-2">
+                        华为pura70Ultra
+                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>
+                    </th>
+                    <th scope="col" class="col-lg-2">
+                        荣耀100pro
+                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>
+                    </th>
+                    <th scope="col" class="col-lg-2">
+                        小米RedmiTurbo3
+                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>
+                    </th>
+                    <th scope="col" class="col-lg-2">
+                        OPPOReno12Pro
+                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>
+                    </th>
+                    <th scope="col" class="col-lg-1">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">只看差异</label>
+                          </div>
+                    </th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-selfdefined">
+                    <th scope="row">价格</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">屏幕尺寸</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">屏幕分辨率</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">屏幕刷新率</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">运行内存</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">机身内存</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">前置摄像头</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">后置摄像头</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">电池容量</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">充电功率</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">无线充电</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">价格</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">CPU</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">操作系统</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">上市时间</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">颜色</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">好评率</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr class="table-selfdefined">
+                    <th scope="row">近期销量</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>                   
+            </tbody>
+        </table>
+    </div>    
+
+
+    <!-- Bootstrap Bundle JS（包括Popper） -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
 </body>
+
 </html>
