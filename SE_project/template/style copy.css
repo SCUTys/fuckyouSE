@@ -1,0 +1,34 @@
+@media (min-width: 768px) {
+    .news-input{
+        width: 50%;
+    }
+}
+
+body::before{
+    display: block;
+    content: '';
+    height: 56px;
+}
+
+thead.self-fixed{
+    position: sticky;
+    top: 56px; /* 假设导航栏高度为56px */
+    background-color: white;
+    z-index: 1020; /* 确保表头在滚动内容之上 */
+}
+
+.table-selfdefined{
+    background-color:rgb(215, 248, 248)
+}
+
+@media (min-width: 768px) {
+    .container-fluid{
+        max-width: 720px; /* 或者您想要的任何宽度 */
+    }
+}
+
+.navbar .dropdown-menu {
+    min-width: 0; /* 设置最小宽度为0，以便宽度可以自适应内容 */
+    width: auto; /* 自动调整宽度以适应内容 */
+    transform: translate3d(0, 38px, 0); /* 根据需要调整位置 */
+}
