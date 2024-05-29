@@ -4,6 +4,9 @@
     }
 }
 
+
+  
+
 body::before{
     display: block;
     content: '';
@@ -32,3 +35,21 @@ thead.self-fixed{
     width: auto; /* 自动调整宽度以适应内容 */
     transform: translate3d(0, 38px, 0); /* 根据需要调整位置 */
 }
+
+/* 自定义切换按钮的大小 */
+.form-check-input {
+    width: 2.5em;      /* 调整宽度 */
+    height: 1.25em;    /* 调整高度 */
+    cursor: pointer;
+  }
+  
+  /* 调整滑块的大小 */
+  .form-check-input::before {
+    width: 1.25em;     /* 滑块宽度 */
+    height: 1.25em;    /* 滑块高度 */
+  }
+  
+  /* 调整滑块的位置 */
+  .form-check-input:checked::before {
+    transform: translateX(1.25em); /* 根据宽度调整 */
+  }

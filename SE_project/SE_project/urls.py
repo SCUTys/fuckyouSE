@@ -27,20 +27,22 @@ from searchresult import views as searchresult_views
 from urlsearch import views as urlsearch_views
 from latesthot import views as latesthot_views
 
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("test-mainwindow/", app_mainwindow_views.test_mainwindow),
-    path("/compare/", compare_views.compare_mainwindow,name="compare"),
-    path("/conditionfilter/", conditionfilter_views.conditionfilter_window,name="conditionfilter"),
-    path("/detail/", detail_views.detail_window,name="detail"),
-    path("/latestgood/", latestgood_views.latestgood_window,name="latestgood"),
-    path("/login/", login_views.login_window,name="login"),
-    path("/recenthot/", recenthot_views.recenthot_window,name="recenthot"),
-    path("/salerank/", salerank_views.salerank_window,name="salerank"),
-    path("/searchresult/", searchresult_views.searchresult_window,name="searchresult"),
-    path("/urlsearch/", urlsearch_views.urlsearch_window,name="urlsearch"),
-    path("/latesthot/", latesthot_views.latesthot_window,name="latesthot")
+    path("compare/", compare_views.compare_mainwindow,name="compare"),
+    path("conditionfilter/", conditionfilter_views.conditionfilter_window,name="conditionfilter"),
+    path("detail/", detail_views.detail_window,name="detail"),
+    path("latestgood/", latestgood_views.latestgood_window,name="latestgood"),
+    path("login/", login_views.login_window,name="login"),
+    path("recenthot/", recenthot_views.recenthot_window,name="recenthot"),
+    path("salerank/", salerank_views.salerank_window,name="salerank"),
+    path("searchresult/", searchresult_views.searchresult_window,name="searchresult"),
+    path("urlsearch/", urlsearch_views.urlsearch_window,name="urlsearch"),
+    path("latesthot/", latesthot_views.latesthot_window,name="latesthot")
 
     # path('',include('SE_project.urls'))
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
