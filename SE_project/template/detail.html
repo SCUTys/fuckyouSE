@@ -1,10 +1,50 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--</body>-->
+<!--</html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>调用词云示例</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <form id="myForm" action="/generate_WC/" method="post">-->
+<!--        {% csrf_token %}-->
+<!--        <input type="submit" value="生成词云">-->
+<!--    </form>-->
+<!--    <img src="{% url 'generate_WC' %}">-->
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>调用词云示例</title>
+    <script type="text/javascript" src="/static/js/jquery-3.2.1.js"></script>
 </head>
 <body>
-
+    <button id="load-image-button">测试</button>
+    <img id="image" src="" style="display: none;">
+<!--    显示图片的脚本-->
+    <script>
+    $(document).ready(function(){
+        $("#load-image-button").click(function(){
+            $.ajax({
+                url: "/generate_WC/",
+                type: "GET",
+                success: function(data){
+                console.log(data.status);
+                        $("#image").attr("src", /generate_WC/);
+                        $("#image").show();
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>

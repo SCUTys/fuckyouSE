@@ -42,7 +42,10 @@ urlpatterns = [
     path("salerank/", salerank_views.salerank_window,name="salerank"),
     path("searchresult/", searchresult_views.searchresult_window,name="searchresult"),
     path("urlsearch/", urlsearch_views.urlsearch_window,name="urlsearch"),
-    path("latesthot/", latesthot_views.latesthot_window,name="latesthot")
+    path("latesthot/", latesthot_views.latesthot_window,name="latesthot"),
+
+    ##details_url
+    path("generate_WC/", detail_views.generate_WC, name='generate_WC'),
 
     # path('',include('SE_project.urls'))
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
