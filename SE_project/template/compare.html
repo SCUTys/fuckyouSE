@@ -8,7 +8,7 @@
     <title>testcompare</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="style copy.css">  
+    <link rel="stylesheet"  type="text/css" href="/static/style copy.css">
 </head>
 
 <body>
@@ -55,27 +55,29 @@
         <table class="table table-hover table-bordered table-responsive">
             <thead class="self-fixed">
                 <tr>
+                     {% for name in namelist %}
                     <th scope="col" class="col-lg-1">#</th>
                     <th scope="col" class="col-lg-2">
-                        华为mate70ultra
+                        {{name}}
                         <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>
                     </th>
-                    <th scope="col" class="col-lg-2">
-                        华为pura70Ultra
-                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>
-                    </th>
-                    <th scope="col" class="col-lg-2">
-                        荣耀100pro
-                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>
-                    </th>
-                    <th scope="col" class="col-lg-2">
-                        小米RedmiTurbo3
-                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>
-                    </th>
-                    <th scope="col" class="col-lg-2">
-                        OPPOReno12Pro
-                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>
-                    </th>
+                    {% endfor %}
+<!--                    <th scope="col" class="col-lg-2">-->
+<!--                        华为pura70Ultra-->
+<!--                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>-->
+<!--                    </th>-->
+<!--                    <th scope="col" class="col-lg-2">-->
+<!--                        荣耀100pro-->
+<!--                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>-->
+<!--                    </th>-->
+<!--                    <th scope="col" class="col-lg-2">-->
+<!--                        小米RedmiTurbo3-->
+<!--                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>-->
+<!--                    </th>-->
+<!--                    <th scope="col" class="col-lg-2">-->
+<!--                        OPPOReno12Pro-->
+<!--                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>-->
+<!--                    </th>-->
                     <th scope="col" class="col-lg-1">
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
@@ -86,149 +88,114 @@
                 </tr>
             </thead>
             <tbody>
+
                 <tr class="table-selfdefined">
                     <th scope="row">价格</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for price in prices %}
+                    <td>{{price}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">屏幕尺寸</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for screenSize in screenSizes %}
+                    <td>{{screenSize}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">屏幕分辨率</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for screenResolution in screenResolutions %}
+                    <td>{{screenResolution}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">屏幕刷新率</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for refreshrate in refreshrates %}
+                    <td>{{refreshrate}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">运行内存</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for memory in memorys %}
+                    <td>{{memory}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">机身内存</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for storage in storages %}
+                    <td>{{storage}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">前置摄像头</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                   {% for cameraFront in cameraFronts %}
+                    <td>{{cameraFront}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">后置摄像头</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for cameraBack in cameraBacks %}
+                    <td>{{cameraBack}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">电池容量</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for batteryCapacity in batteryCapacitys %}
+                    <td>{{batteryCapacity}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">充电功率</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for chargingPower in chargingPowers %}
+                    <td>{{chargingPower}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">无线充电</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for chargingPowerWireless in chargingPowerWirelesss %}
+                    <td>{{chargingPowerWireless}}</td>
+                    {% endfor %}
                 </tr>
-                <tr class="table-selfdefined">
-                    <th scope="row">价格</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                </tr>
+<!--                <tr class="table-selfdefined">-->
+<!--                    <th scope="row">价格</th>-->
+<!--                  {% for price in pricelist %}-->
+<!--                    <td>{{price}}</td>-->
+<!--                    {% endfor %}-->
+<!--                </tr>-->
                 <tr class="table-selfdefined">
                     <th scope="row">CPU</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                   {% for cpu in cpus %}
+                    <td>{{cpu}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">操作系统</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for operatingSys in operatingSyss %}
+                    <td>{{operatingSys}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">上市时间</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                   {% for availability in availabilitys %}
+                    <td>{{availability}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">颜色</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for color in colors %}
+                    <td>{{color}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">好评率</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for positiveRate in positiveRates %}
+                    <td>{{positiveRate}}</td>
+                    {% endfor %}
                 </tr>
                 <tr class="table-selfdefined">
                     <th scope="row">近期销量</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    {% for sales in saless %}
+                    <td>{{sales}}</td>
+                    {% endfor %}
                 </tr>                   
             </tbody>
         </table>
