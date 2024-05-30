@@ -3,7 +3,6 @@ import openpyxl
 import unicodedata
 from collections import OrderedDict
 
-
 def remove_duplicates_and_emojis(original_file, new_file):
     print("开始处理原始文件: ", original_file)
 
