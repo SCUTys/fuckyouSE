@@ -2,46 +2,31 @@
 import openpyxl
 import unicodedata
 from collections import OrderedDict
+import pandas as pd
 
-def remove_duplicates_and_emojis(original_file, new_file):
-    print("开始处理原始文件: ", original_file)
+def remove_duplicates_and_emojis(df):
+    print("开始处理原始文件: \n")
 
-    wb = openpyxl.load_workbook(original_file)
-    ws = wb.active
+    new_df = pd.DataFrame(columns=df.columns)
 
-    # 读取表头
-    headers = [ws.cell(row=1, column=i).value for i in range(1, ws.max_column + 1)]
-    wb_new = openpyxl.Workbook()
-    ws_new = wb_new.active
-
-    # 将表头复制到新工作簿中
-    for i, header in enumerate(headers, start=1):
-        ws_new.cell(row=1, column=i).value = header
-
-    # 使用有序字典存储去重后的评论及其对应列数据
     comments_dict = OrderedDict()
 
-    # 遍历原始数据，去除表情符号并去重
-    for row in range(2, ws.max_row + 1):
-        content = ws.cell(row=row, column=3).value
+    for index, row in df.iterrows():
+        content = row['content']
         if not content:
             continue
 
         content_no_emoji = remove_emojis(content)
         if content_no_emoji not in comments_dict:
-            comments_dict[content_no_emoji] = [ws.cell(row=row, column=i).value for i in range(1, ws.max_column + 1)]
+            comments_dict[content_no_emoji] = row
 
-    # 将去重后的内容写入新工作簿
-    for row_index, content in enumerate(comments_dict.values(), start=2):
-        for col_index, cell_value in enumerate(content):
-            if col_index == 2:  # 对第3列（即评论列）单独去除表情符号
-                cell_value = remove_emojis(cell_value)
-            ws_new.cell(row=row_index, column=col_index + 1).value = cell_value
+    for index, row in enumerate(comments_dict.values(), start=1):
+        row['content'] = remove_emojis(row['content'])
+        new_df.loc[index] = row
 
-    wb_new.save(new_file)
+    print("数据清理完毕，表情已删除。")
 
-    print("数据清理完毕，表情已删除。结果保存至文件: ", new_file)
-
+    return new_df
 
 def remove_emojis(text):
     """
