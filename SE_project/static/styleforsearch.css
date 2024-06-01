@@ -1,0 +1,44 @@
+@media (min-width: 768px) {
+    .news-input{
+        width: 50%;
+    }
+}
+
+body::before{
+    display: block;
+    content: '';
+    height: 56px;
+}
+
+
+.btn-outline-primary {
+    border-color: blue !important;
+    color: blue !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: blue !important;
+    color: white !important;
+}
+
+/* 为表格的第一列设置灰色背景 */
+table tr td:first-child, table tr th:first-child {
+    background-color: #f2f2f2; /* 灰色 */
+}
+
+
+.btn-color-1 {
+    background-color: white; /* 蓝色背景 */
+    color: blue; /* 白色文本 */
+  }
+  
+  .btn-color-2 {
+    background-color: white; /* 绿色背景 */
+    color: red; /* 红色文本 */
+  }
+  
+/* 鼠标悬停时显示下拉菜单 */
+.dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
