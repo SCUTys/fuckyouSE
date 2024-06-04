@@ -40,7 +40,7 @@ urlpatterns = [
     path("login/", login_views.login_window,name="login"),
     path("recenthot/", recenthot_views.recenthot_window,name="recenthot"),
     path("salerank/", salerank_views.salerank_window,name="salerank"),
-    path("searchresult/", searchresult_views.searchresult_window,name="searchresult"),
+    path("test-mainwindow/searchresult/", searchresult_views.searchresult_window,name="searchresult"),
     path("urlsearch/", urlsearch_views.urlsearch_window,name="urlsearch"),
     path("latesthot/", latesthot_views.latesthot_window,name="latesthot"),
 
