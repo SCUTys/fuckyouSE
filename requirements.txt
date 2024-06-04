@@ -1,0 +1,16 @@
+Django==4.1
+openpyxl
+xlrd
+imageio
+jieba
+pandas
+parsel
+tqdm
+requests
+wordcloud
+PIL
+matplotlib
+dashscope
+pypandoc
+urllib
+snownlp
