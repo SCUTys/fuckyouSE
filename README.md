@@ -21,5 +21,5 @@
 词云+天梯图（？）+饼图（？？）
 
 # 运行：
-python manage.py 0.0.0.0:8000 （目录：与manage.py同级）
+python manage.py runserver 
 然后访问 http://127.0.0.1:8000/test-mainwindow/
