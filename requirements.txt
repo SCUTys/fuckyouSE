@@ -8,9 +8,7 @@ parsel
 tqdm
 requests
 wordcloud
-PIL
 matplotlib
 dashscope
 pypandoc
-urllib
 snownlp
