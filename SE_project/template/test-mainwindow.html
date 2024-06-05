@@ -72,7 +72,7 @@
 <!--                    <form class="d-flex p-1">-->
 <!--                        <input class="form-control lg-2" type="search" id="keyword">-->
 <!--                    </form>-->
-                    <a href="{% url 'searchresult' %}" button class="btn btn-light btn-md" id="search-btn" lay-filter="sumbit" >搜索</abutton></a>
+                    <a  button class="btn btn-light btn-md" id="search-btn" lay-filter="sumbit" >搜索</abutton></a>
                     <input type="text" id="suggestId" size="20" value="请输入搜索内容" style="width:150px;" />
 
 <script>
@@ -80,20 +80,18 @@
         $("#search-btn").click(function(){
         var key = document.getElementById("suggestId").value;
             $.ajax({
-                url: "searchresult/",
+                url: "/call_searchresult/",
                 type: "post",
                 data:{
-                    'key': key,
+                    'keyword': key,
                 },
+                success: function() {
+                 window.location.href = "/searchresult/";
+            }
             });
         });
     });
-    </script>
-
-
-
-
-
+</script>
                 </div>
                 <img src="./11.svg" alt="showcase" class="w-50 d-none d-md-block">
             </div>

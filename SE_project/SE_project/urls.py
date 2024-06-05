@@ -40,12 +40,17 @@ urlpatterns = [
     path("login/", login_views.login_window,name="login"),
     path("recenthot/", recenthot_views.recenthot_window,name="recenthot"),
     path("salerank/", salerank_views.salerank_window,name="salerank"),
-    path("test-mainwindow/searchresult/", searchresult_views.searchresult_window,name="searchresult"),
+    path("searchresult/", searchresult_views.searchresult_window,name="searchresult"),
     path("urlsearch/", urlsearch_views.urlsearch_window,name="urlsearch"),
     path("latesthot/", latesthot_views.latesthot_window,name="latesthot"),
 
     ##details_url
     path("generate_WC/", detail_views.generate_WC, name='generate_WC'),
+
+    path('check_task/', searchresult_views.check_task,name="check_task"),
+    path('mycrawler/', searchresult_views.mycrawler,name="mycrawler"),
+
+    path('call_searchresult/', searchresult_views.call_searchresult,name="call_crawler"),
 
     # path('',include('SE_project.urls'))
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

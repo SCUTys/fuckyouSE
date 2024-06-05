@@ -1,24 +1,60 @@
-from django.shortcuts import render
+from time import sleep
+from django.shortcuts import HttpResponse, redirect, reverse
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render, redirect
 from JRAS import spider
+import threading
+# from ajax.decorators import ajax
 # Create your views here.
+# @ajax
+flag = False
+def mycrawler(keyword):
+    # keyword=request.POST.get('keyword')
+    print("keyword")
+    print(keyword)
+    # 根据keyword爬虫
+    cookie = "shshshfpa=461eef8c-5592-f1b8-1863-c296acf144e8-1713490842; shshshfpx=461eef8c-5592-f1b8-1863-c296acf144e8-1713490842; __jdu=17134908428041536521440; __jdv=76161171|www.bing.com|-|referral|-|1716431528090; pinId=gpXgCqz9ZronTwmVTfLR3g; pin=jd_hoCgxwDRQSiQ; unick=jd_es2lk4sv85zfx8; _tp=ezZG5SVF%2BP5fpYqKEfdi1Q%3D%3D; _pst=jd_hoCgxwDRQSiQ; qrsc=3; TrackID=1eTKDQOFnNxPQGaszQJ7torU2Qqbg4mvGoH5prNMNLNIm71TXDBqLjxi78yUCPyDwa0pDT8mChvTco3Xst3YSEWEgWQFoeFaWA-CmXkK0gFqOiJJHKXJa6DQFSW9yuNM8; thor=0154BEF7F3ABAD2AC9F8B853DF438E2DA2332B6EEBDE1EF9CABCA0BF63AC50772C4CE028EA18C2550B6EDD12A9510B9DB71B1A0EB13F0A7415C17FEAD235FF17DB3AC1D70F66C4FED351BC4E47D2FDC671664E42EAB6C140E1C8A7B1704898B5D433763206537128AC9359EA24D83CBBD8E0075E5E5208E30CE94F3D41DC9E047753B556FBF6D0CE2F46D9426B7250FE230EF6636AC5F02A70E2D946B2626A28; flash=2_3aLITYetDX6Zi8jYaqTco3DK5oucL4MKdqqXvSC8wGcIrOEq7T49XQ89zr-XdZ0V-g41NpdhIsDt0oi97TJPWi0fdbNyuW5lcLgFChRqLi5dQOgmg9O-BkLfVkSaa_iejQe0ApYr-ASEdTUFG_BWlG9U70B9qdmobGIWHYv-fFp*; 3AB9D23F7A4B3CSS=jdd03TNWWNPEFMMCF3K34TQT4W2L7W2ENOCVPKMVTXU3VLXUIVJKPCXUAAGMBMZQ5ZR3YEUK7DYB4543KPOQHT4F3VEYRU4AAAAMP4YWB6NIAAAAADWTHDPMMAQXBWMX; _gia_d=1; jsavif=1; jsavif=1; xapieid=jdd03TNWWNPEFMMCF3K34TQT4W2L7W2ENOCVPKMVTXU3VLXUIVJKPCXUAAGMBMZQ5ZR3YEUK7DYB4543KPOQHT4F3VEYRU4AAAAMP4YWB6NIAAAAADWTHDPMMAQXBWMX; __jda=143920055.17134908428041536521440.1713490843.1717505131.1717553599.7; __jdb=143920055.2.17134908428041536521440|7.1717553599; __jdc=143920055; rkv=1.0; areaId=19; ipLoc-djd=19-1601-0-0; shshshfpb=BApXcyxEk5epA6EGcp9UfDKqqq-EXN_UyBlEID21r9xJ1MiXwPIC2; 3AB9D23F7A4B3C9B=TNWWNPEFMMCF3K34TQT4W2L7W2ENOCVPKMVTXU3VLXUIVJKPCXUAAGMBMZQ5ZR3YEUK7DYB4543KPOQHT4F3VEYRU4"
+    page_num = 5
+    content = keyword
+    # 获取爬取后得到的数据
+    # phone_ids = spider.spider_product(cookie, content, page_num)  # 手机名称
+    ##测试数据
+    phone_ids=["111","222"]
+    phone_datas = []
+    ##模拟延迟
+    sleep(5)
+
+    context = {
+        "phone_ids": phone_ids,
+        "phone_datas": phone_datas
+    }
+    return context
+
+
+
+def check_task(request):
+    keyword=request.POST.get('keyword')
+    data=mycrawler(keyword)
+    context={
+        'phone_ids':data['phone_ids'],
+        'phone_datas': data['phone_datas'],
+        'task_done': True
+    }
+    print(context)
+    return JsonResponse(context)
+
+# def waiting_page(request):
+#     return render(request, 'waiting.html')
 def searchresult_window(request):
+
+    return render(request, 'searchresult.html')
+def call_searchresult(request):
+    context={}
     if request.method == 'POST':
         # 获取POST数据
         post_data = request.POST
-
         keyword= post_data.get("keyword")
-        print("keyword")
-        print(keyword)
-        # 根据keyword爬虫
-
-
-        #获取爬取后得到的数据
-        phone_names=[]#手机名称
-        context = {
-            "phone_names": phone_names,
-        }
-        # ...
-
-
-
-    return render(request,"searchresult.html",context)
+    context = {
+        'keyword': keyword
+    }
+    return render(request, 'searchresult.html',context)
