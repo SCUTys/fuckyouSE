@@ -1,0 +1,70 @@
+@media (min-width: 768px) {
+    .news-input{
+        width: 50%;
+    }
+}
+
+body::before{
+    display: block;
+    content: '';
+    height: 56px;
+}
+
+.text-purple{
+    background-color: #800080; /* 紫色 */
+  }
+
+
+  .text-brightyellow {
+    background-color: #FFEA00; /* 亮黄色 */
+  }
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    position: relative;
+  }
+  
+  .spinner-grow {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    /* 初始时隐藏 */
+    opacity: 0;
+  }
+  
+  /* 定义动画 */
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  
+  /* 应用动画到所有spinner */
+  .spinner-grow {
+    animation-name: fadeInOut;
+    /* 动画持续时间为2秒 */
+    animation-duration: 1.6s;
+    /* 动画无限循环 */
+    animation-iteration-count: infinite;
+  }
+  
+  /* 设置每个spinner的动画延迟，使其顺时针依次显示 */
+  /* .spinner-grow:nth-child(1) { animation-delay: 0s; transform: translate(-50px, -50px)}
+  .spinner-grow:nth-child(2) { animation-delay: 0.2s; transform: translate(0, -70px)}
+  .spinner-grow:nth-child(3) { animation-delay: 0.4s; transform: translate(50px, -50px);}
+  .spinner-grow:nth-child(4) { animation-delay: 0.6s; transform: translate(70px, 0)}
+  .spinner-grow:nth-child(5) { animation-delay: 0.8s; transform: translate(50px, 50px)}
+  .spinner-grow:nth-child(6) { animation-delay: 1s; transform: translate(0, 70px)}
+  .spinner-grow:nth-child(7) { animation-delay: 1.2s; transform: translate(-50px, 50px)}
+  .spinner-grow:nth-child(8) { animation-delay: 1.4s;  transform: translate(-70px, 0)} */
+  .spinner-grow:nth-child(1) { animation-delay: 0s; transform: translate(-75px, -75px)}
+  .spinner-grow:nth-child(2) { animation-delay: 0.2s; transform: translate(0, -105px)}
+  .spinner-grow:nth-child(3) { animation-delay: 0.4s; transform: translate(75px, -75px);}
+  .spinner-grow:nth-child(4) { animation-delay: 0.6s; transform: translate(105px, 0)}
+  .spinner-grow:nth-child(5) { animation-delay: 0.8s; transform: translate(75px, 75px)}
+  .spinner-grow:nth-child(6) { animation-delay: 1s; transform: translate(0, 105px)}
+  .spinner-grow:nth-child(7) { animation-delay: 1.2s; transform: translate(-75px, 75px)}
+  .spinner-grow:nth-child(8) { animation-delay: 1.4s;  transform: translate(-105px, 0)}
+  
