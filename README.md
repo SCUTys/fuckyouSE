@@ -23,3 +23,6 @@
 # 运行：
 python manage.py runserver 
 然后访问 http://127.0.0.1:8000/test-mainwindow/
+
+# replicate接口：
+必须要把access_token放到运行变量里面才能运行
