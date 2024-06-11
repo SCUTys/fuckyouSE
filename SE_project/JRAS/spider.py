@@ -14,11 +14,13 @@ from tqdm import tqdm
 #spider_product函数用于爬取商品ID,参数为cookie,url,page_num, 返回值为商品ID列表(string)
 def spider_product(cookie, content, page_num):
 
+
     url = f'https://search.jd.com/Search?keyword={content}&page='
 
     goods = []
 
-    for page in range(1, page_num):
+    for page in range(1, page_num+1):
+        print("begin crawling")
         header = {
             'Referer': 'https://search.jd.com/',
             'Origin': 'https://search.jd.com',
@@ -27,15 +29,17 @@ def spider_product(cookie, content, page_num):
         }
 
         new_url = url + str(page)
-
+        print(new_url)
 
         response = requests.get(url=new_url, headers=header)
 
         html_data = response.text
 
+
         selector = parsel.Selector(html_data)
 
         goods.extend(selector.xpath('//div[@class="gl-i-wrap"]'))
+
 
     product_ids = []
 
@@ -64,7 +68,7 @@ def spider_data(page, product_id):
     """
 
     score = 4
-    page_amount = 3
+    page_amount = page
 
     columns = ['nickname', 'id', '内容', '时间']
     df = pd.DataFrame(columns=columns)

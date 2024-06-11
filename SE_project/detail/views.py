@@ -31,6 +31,8 @@ class WC_WorkerThread():
 
 # Create your views here.
 def detail_window(request):
+    data=request.POST.get('phone_data_with_id')
+    print(data)
     print("waiting...")
     return render(request,"detail.html")
 import json

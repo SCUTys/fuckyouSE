@@ -5,251 +5,253 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/styleforsearch.css">
     <script type="text/javascript" src="/static/js/jquery-3.2.1.js"></script>
 </head>
 <body>
-    
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
-        <div class="container">
 
-            <a href="#" class="navbar-brand">钢铁直男の5G手机爬虫乐园</a>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+    <div class="container">
 
-            <!-- Toggler Button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <a href="#" class="navbar-brand">钢铁直男の5G手机爬虫乐园</a>
 
-            <!-- Navbar Collapse -->
-            <div class="collapse navbar-collapse" id="navmenu">
-                <ul class="navbar-nav ms-auto">
-                    <!-- Navigation Items -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">返回主页</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">对比</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">登录/注册</a>
-                    </li>
+        <!-- Toggler Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    <!-- Dropdown Menu for Small Screens -->
-                    <li class="nav-item dropdown d-lg-none">
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">返回主页</a></li>
-                            <li><a class="dropdown-item" href="#">对比</a></li>
-                            <li><a class="dropdown-item" href="#">登录/注册</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+        <!-- Navbar Collapse -->
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <!-- Navigation Items -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">返回主页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">对比</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">登录/注册</a>
+                </li>
+
+                <!-- Dropdown Menu for Small Screens -->
+                <li class="nav-item dropdown d-lg-none">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">返回主页</a></li>
+                        <li><a class="dropdown-item" href="#">对比</a></li>
+                        <li><a class="dropdown-item" href="#">登录/注册</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
 
-    <section class="p-5 bg-light text-dark">
-        <div class="container">
-            <div class="d-md-flex justify-content-center align-items-center">
-                <div class="input-group news-input">
-                    <input
+<section class="p-5 bg-light text-dark">
+    <div class="container">
+        <div class="d-md-flex justify-content-center align-items-center">
+            <div class="input-group news-input">
+                <input
                         type="text"
                         class="form-control"
                         placeholder="在此搜索"
                         style="border: 2px solid blue;"
-                    />
-                    <button class="btn btn-outline-primary btn-lg">搜索</button>
+                />
+                <button class="btn btn-outline-primary btn-lg">搜索</button>
+            </div>
+        </div>
+        <table class="table table-bordered justify-content-center">
+            <thead>
+            <th scope="col" class="col-2">排序方法</th>
+            <th scope="col" class="col-10 d-flex align-items-center">
+
+                <div class="me-4">
+                    <input class="form-check-input" type="radio" name="options" id="option1" value="option1">
+                    <label class="form-check-label" for="option1">
+                        新品优先
+                    </label>
+                </div>
+                <div class="me-4">
+                    <input class="form-check-input" type="radio" name="options" id="option2" value="option2">
+                    <label class="form-check-label" for="option2">
+                        销量优先
+                    </label>
+                </div>
+                <div class="me-4">
+                    <input class="form-check-input" type="radio" name="options" id="option3" value="option3">
+                    <label class="form-check-label" for="option3">
+                        热度优先
+                    </label>
+                </div>
+
+            </th>
+            </thead>
+            <tbody>
+            <tr class="">
+                <th scope="row">机身内存</th>
+                <td class="p-1">
+                    <button class="btn btn-color-1" type="button">1TB</button>
+                    <button class="btn btn-color-1" type="button">512GB</button>
+                    <button class="btn btn-color-1" type="button">256GB</button>
+                    <button class="btn btn-color-1" type="button">128GB</button>
+                    <button class="btn btn-color-1" type="button">64GB及以下</button>
+                    <button class="btn btn-color-1" type="button">未公布</button>
+                </td>
+            </tr>
+            <tr class="">
+                <th scope="row">运行内存</th>
+                <td>
+                    <button class="btn btn-color-1" type="button">24GB</button>
+                    <button class="btn btn-color-1" type="button">18GB</button>
+                    <button class="btn btn-color-1" type="button">12GB</button>
+                    <button class="btn btn-color-1" type="button">8GB</button>
+                    <button class="btn btn-color-1" type="button">其他</button>
+                    <button class="btn btn-color-1" type="button">未公布</button>
+                </td>
+            </tr>
+            <tr class="">
+                <th scope="row">屏幕尺寸</th>
+                <td>
+                    <button class="btn btn-color-1" type="button">7英寸</button>
+                    <button class="btn btn-color-1" type="button">6.8-7.0英寸</button>
+                    <button class="btn btn-color-1" type="button">6.6-6.79英寸</button>
+                    <button class="btn btn-color-1" type="button">6.3-6.59英寸</button>
+                    <button class="btn btn-color-1" type="button">6.0-6.29英寸</button>
+                    <button class="btn btn-color-1" type="button">6英寸以下</button>
+                </td>
+            </tr>
+            <tr class="">
+                <th scope="row">按价格</th>
+                <td>
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-lg-2">
+                            <input type="number" class="form-control" placeholder="" step="100"/>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-2">
+                            <input type="number" class="form-control" placeholder="" step="100"/>
+                        </div>
+                        <div class="col-4">
+                            <button class="btn btn-primary" type="button">应用</button>
+                            <button class="btn btn-primary" type="button">重置</button>
+                        </div>
+
+                    </div>
+                </td>
+            </tr>
+            <tr class="">
+                <th scope="row">其他选项</th>
+                <td>
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        电池容量
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><button class="dropdown-item btn btn-color-1" type="button">6000mAh以上</button></li>
+                        <li><button class="dropdown-item btn btn-color-1" type="button">5500-5999mAh</button></li>
+                        <li><button class="dropdown-item btn btn-color-1" type="button">5000-5499mAh</button></li>
+                        <li><button class="dropdown-item btn btn-color-1" type="button">4500-4999mAh</button></li>
+                        <li><button class="dropdown-item btn btn-color-1" type="button">4000-4499mAh</button></li>
+                        <li><button class="dropdown-item btn btn-color-1" type="button">3000-3999mAh</button></li>
+                        <li><button class="dropdown-item btn btn-color-1" type="button">3000mAh以下</button></li>
+                    </ul>
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                        充电功率
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                        <li><button class="dropdown-item btn btn-color-1" type="button">240W</button></li>
+                        <li><button class="dropdown-item btn btn-color-1" type="button">151-200W</button></li>
+                        <li><button class="dropdown-item btn btn-color-1" type="button">120-150W</button></li>
+                        <li><button class="dropdown-item btn btn-color-1" type="button">80-119W</button></li>
+                        <li><button class="dropdown-item btn btn-color-1" type="button">50-79W</button></li>
+                        <li><button class="dropdown-item btn btn-color-1" type="button">50W以下</button></li>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+
+<section class="p-5">
+    <div class="container">
+        <div class="row g-4" id="test-row">
+
+            <!--                <div class="col-md">-->
+            <!--                    <div class="card bg-light text-dark">-->
+            <!--                        <img class="card-img-top" src="1234.jpg" alt="Card image">-->
+            <!--                        <div class="card-body text-center">-->
+            <!--                            <div class="card-title">华为（HUAWEI） Mate X5 典藏版</div>-->
+            <!--                            <div class="card-text">-->
+            <!--                                (可能的话)此处输入价格区间-->
+            <!--                            </div>-->
+            <!--                            <a href="#" class="btn btn-primary mt-2"-->
+            <!--                                >查看详细信息</a-->
+            <!--                            >-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+
+            <!--                <div class="col-md">-->
+            <!--                    <div class="card bg-light text-dark">-->
+            <!--                        <img class="card-img-top" src="5678.jpg" alt="Card image">-->
+            <!--                        <div class="card-body text-center">-->
+            <!--                            <div class="card-title">华为（HUAWEI）Mate 60 Pro 乐臻版</div>-->
+            <!--                            <div class="card-text">-->
+            <!--                                (可能的话)此处输入价格区间-->
+            <!--                            </div>-->
+            <!--                            <a href="#" class="btn btn-primary mt-2"-->
+            <!--                                >查看详细信息</a-->
+            <!--                            >-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                <div class="col-md">-->
+            <!--                    <div class="card bg-light text-dark">-->
+            <!--                        <img class="card-img-top" src="90.jpg" alt="Card image">-->
+            <!--                        <div class="card-body text-center">-->
+            <!--                            <div class="card-title">华为 HUAWEI Mate 40 RS</div>-->
+            <!--                            <div class="card-text">-->
+            <!--                                (可能的话)此处输入价格区间-->
+            <!--                            </div>-->
+            <!--                            <a href="#" class="btn btn-primary mt-2"-->
+            <!--                                >查看详细信息</a-->
+            <!--                            >-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+
+
+            <div class="container mt-3">
+                <h2 class="text-center p-5">加载中</h2>
+                <div class="spinner-container">
+                    <div class="spinner-grow text-muted"></div>
+                    <div class="spinner-grow text-primary"></div>
+                    <div class="spinner-grow text-success"></div>
+                    <div class="spinner-grow text-info"></div>
+                    <div class="spinner-grow text-warning"></div>
+                    <div class="spinner-grow text-danger"></div>
+                    <div class="spinner-grow text-brightyellow"></div>
+                    <div class="spinner-grow text-purple"></div>
+                    <div class="spinner-grow text-light"></div>
                 </div>
             </div>
-            <table class="table table-bordered justify-content-center">
-                <thead>
-                    <th scope="col" class="col-2">排序方法</th>
-                    <th scope="col" class="col-10 d-flex align-items-center">
-                        
-                              <div class="me-4">
-                                <input class="form-check-input" type="radio" name="options" id="option1" value="option1">
-                                <label class="form-check-label" for="option1">
-                                  新品优先
-                                </label>
-                              </div>
-                              <div class="me-4">
-                                <input class="form-check-input" type="radio" name="options" id="option2" value="option2">
-                                <label class="form-check-label" for="option2">
-                                  销量优先
-                                </label>
-                              </div>
-                              <div class="me-4">
-                                <input class="form-check-input" type="radio" name="options" id="option3" value="option3">
-                                <label class="form-check-label" for="option3">
-                                  热度优先
-                                </label>
-                              </div>
-                          
-                    </th>
-                </thead>
-                <tbody>
-                    <tr class="">
-                        <th scope="row">机身内存</th>
-                        <td class="p-1">
-                            <button class="btn btn-color-1" type="button">1TB</button>
-                            <button class="btn btn-color-1" type="button">512GB</button>
-                            <button class="btn btn-color-1" type="button">256GB</button>
-                            <button class="btn btn-color-1" type="button">128GB</button>
-                            <button class="btn btn-color-1" type="button">64GB及以下</button>
-                            <button class="btn btn-color-1" type="button">未公布</button>
-                        </td>
-                    </tr>
-                    <tr class="">
-                        <th scope="row">运行内存</th>
-                        <td>
-                            <button class="btn btn-color-1" type="button">24GB</button>
-                            <button class="btn btn-color-1" type="button">18GB</button>
-                            <button class="btn btn-color-1" type="button">12GB</button>
-                            <button class="btn btn-color-1" type="button">8GB</button>
-                            <button class="btn btn-color-1" type="button">其他</button>
-                            <button class="btn btn-color-1" type="button">未公布</button>
-                        </td>
-                    </tr>
-                    <tr class="">
-                        <th scope="row">屏幕尺寸</th>
-                        <td>
-                            <button class="btn btn-color-1" type="button">7英寸</button>
-                            <button class="btn btn-color-1" type="button">6.8-7.0英寸</button>
-                            <button class="btn btn-color-1" type="button">6.6-6.79英寸</button>
-                            <button class="btn btn-color-1" type="button">6.3-6.59英寸</button>
-                            <button class="btn btn-color-1" type="button">6.0-6.29英寸</button>
-                            <button class="btn btn-color-1" type="button">6英寸以下</button> 
-                        </td>
-                    </tr>
-                    <tr class="">
-                        <th scope="row">按价格</th>
-                        <td>
-                            <div class="row">
-                                <div class="col-sm-3 col-md-3 col-lg-2">
-                                  <input type="number" class="form-control" placeholder="" step="100"/>
-                                </div>
-                                <div class="col-sm-3 col-md-3 col-lg-2">
-                                  <input type="number" class="form-control" placeholder="" step="100"/>
-                                </div>
-                                <div class="col-4">
-                                    <button class="btn btn-primary" type="button">应用</button>
-                                    <button class="btn btn-primary" type="button">重置</button>
-                                </div>
-                                
-                              </div>
-                        </td>
-                    </tr>
-                    <tr class="">
-                        <th scope="row">其他选项</th>
-                        <td>
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                电池容量
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><button class="dropdown-item btn btn-color-1" type="button">6000mAh以上</button></li>
-                                <li><button class="dropdown-item btn btn-color-1" type="button">5500-5999mAh</button></li>
-                                <li><button class="dropdown-item btn btn-color-1" type="button">5000-5499mAh</button></li>
-                                <li><button class="dropdown-item btn btn-color-1" type="button">4500-4999mAh</button></li>
-                                <li><button class="dropdown-item btn btn-color-1" type="button">4000-4499mAh</button></li>
-                                <li><button class="dropdown-item btn btn-color-1" type="button">3000-3999mAh</button></li>
-                                <li><button class="dropdown-item btn btn-color-1" type="button">3000mAh以下</button></li>
-                            </ul>
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                                充电功率
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                <li><button class="dropdown-item btn btn-color-1" type="button">240W</button></li>
-                                <li><button class="dropdown-item btn btn-color-1" type="button">151-200W</button></li>
-                                <li><button class="dropdown-item btn btn-color-1" type="button">120-150W</button></li>
-                                <li><button class="dropdown-item btn btn-color-1" type="button">80-119W</button></li>
-                                <li><button class="dropdown-item btn btn-color-1" type="button">50-79W</button></li>
-                                <li><button class="dropdown-item btn btn-color-1" type="button">50W以下</button></li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-    
 
+            <script
+                    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                    crossorigin="anonymous"
+            ></script>
 
-    <section class="p-5">
-        <div class="container">
-            <div class="row g-4" id="test-row">
-
-<!--                <div class="col-md">-->
-<!--                    <div class="card bg-light text-dark">-->
-<!--                        <img class="card-img-top" src="1234.jpg" alt="Card image">-->
-<!--                        <div class="card-body text-center">-->
-<!--                            <div class="card-title">华为（HUAWEI） Mate X5 典藏版</div>-->
-<!--                            <div class="card-text">-->
-<!--                                (可能的话)此处输入价格区间-->
-<!--                            </div>-->
-<!--                            <a href="#" class="btn btn-primary mt-2"-->
-<!--                                >查看详细信息</a-->
-<!--                            >-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--                <div class="col-md">-->
-<!--                    <div class="card bg-light text-dark">-->
-<!--                        <img class="card-img-top" src="5678.jpg" alt="Card image">-->
-<!--                        <div class="card-body text-center">-->
-<!--                            <div class="card-title">华为（HUAWEI）Mate 60 Pro 乐臻版</div>-->
-<!--                            <div class="card-text">-->
-<!--                                (可能的话)此处输入价格区间-->
-<!--                            </div>-->
-<!--                            <a href="#" class="btn btn-primary mt-2"-->
-<!--                                >查看详细信息</a-->
-<!--                            >-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-md">-->
-<!--                    <div class="card bg-light text-dark">-->
-<!--                        <img class="card-img-top" src="90.jpg" alt="Card image">-->
-<!--                        <div class="card-body text-center">-->
-<!--                            <div class="card-title">华为 HUAWEI Mate 40 RS</div>-->
-<!--                            <div class="card-text">-->
-<!--                                (可能的话)此处输入价格区间-->
-<!--                            </div>-->
-<!--                            <a href="#" class="btn btn-primary mt-2"-->
-<!--                                >查看详细信息</a-->
-<!--                            >-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-
-    <div class="container mt-3">
-        <h2 class="text-center p-5">加载中</h2>
-        <div class="spinner-container">
-            <div class="spinner-grow text-muted"></div>
-            <div class="spinner-grow text-primary"></div>
-            <div class="spinner-grow text-success"></div>
-            <div class="spinner-grow text-info"></div>
-            <div class="spinner-grow text-warning"></div>
-            <div class="spinner-grow text-danger"></div>
-            <div class="spinner-grow text-brightyellow"></div>
-            <div class="spinner-grow text-purple"></div>
-            <div class="spinner-grow text-light"></div>
         </div>
     </div>
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"
-    ></script>
-
-            </div>
-        </div>
-        <script>
+    <script>
+    var keyword = "{{ keyword }}";
                 function pollTask() {
-                var keyword = "{{ keyword }}";
+
     $.ajax({
         url: "/check_task/",  // 检查任务的URL
         data: {
@@ -258,15 +260,50 @@
         type: "POST",
         success: function(data) {
             if (data.task_done) {
+                if(data.status==false){
+                 $('#test-row').empty();
+                    $('#test-row').append(
+                    '<div class="container mt-3">' +
+                    '<h2 class="text-center p-5">爬虫失败，请刷新页面重试</h2>' +
+                    '</div>'
+                );
+                }
+                else{
                 var phone_ids=data.phone_ids;
                  $('#test-row').empty();
                 for (var i = 0; i < phone_ids.length; i++) {
-
                 $('#test-row').append(
-                '<div class="col-md"><div class="card bg-light text-dark"><img class="card-img-top" src="1234.jpg" alt="Card image"><div class="card-body text-center"><div class="card-title">'+phone_ids[i]+'</div><div class="card-text">(可能的话)此处输入价格区间</div><a href="#" class="btn btn-primary mt-2">查看详细信息</a></div></div></div>'
+                '<div class="col-md">' +
+                    '<div class="card bg-light text-dark">' +
+                    '<img class="card-img-top" src="1234.jpg" alt="Card image">' +
+                    '<div class="card-body text-center">' +
+                    '<div class="card-title">'+phone_ids[i]+ '</div>' +
+                    '<div class="card-text">(可能的话)此处输入价格区间</div>' +
+                    '<a href="/detail/" class="btn btn-primary mt-2" id='+phone_ids[i]+'>查看详细信息</a>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>'
                 );
+                $('#test-row').on('click', 'a.btn', function() {
+    // 获取被点击的按钮的id
+    var id = $(this).attr('id');
+    var phone_data_with_id=data.phone_datas[id];
+    // 发送post请求
+    $.ajax({
+        url: '/detail/',
+        type: 'POST',
+        data: {
+            'phone_data_with_id': phone_data_with_id
+        },
+        success: function(data) {
+            // 跳转到详情页
+            window.location.href = '/detail/';
+        }
+    });
+
+});
                 }
-            } else {
+            }} else {
                 // 如果任务未完成，等待一段时间后再次检查
                 setTimeout(pollTask, 1000);
             }
@@ -275,13 +312,13 @@
 }
 pollTask();
         </script>
-    </section>
+</section>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-    <script src="/static/styleforsearch.js"></script>
+<script src="/static/styleforsearch.js"></script>
 </body>
 </html>
