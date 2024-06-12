@@ -35,7 +35,11 @@ urlpatterns = [
     path("test-mainwindow/", app_mainwindow_views.test_mainwindow),
     path("compare/", compare_views.compare_mainwindow,name="compare"),
     path("conditionfilter/", conditionfilter_views.conditionfilter_window,name="conditionfilter"),
-    path("detail/", detail_views.detail_window,name="detail"),
+
+    path("detail/", detail_views.call_detail,name="detail"),
+    path("detail/<phone_id>", detail_views.detail_window,name="detail_phone_id"),
+
+
     path("latestgood/", latestgood_views.latestgood_window,name="latestgood"),
     path("login/", login_views.login_window,name="login"),
     path("recenthot/", recenthot_views.recenthot_window,name="recenthot"),
@@ -54,6 +58,6 @@ urlpatterns = [
     path('mycrawler/', searchresult_views.mycrawler,name="mycrawler"),
 
     path('call_searchresult/', searchresult_views.call_searchresult,name="call_crawler"),
-
+    path('call_detail/', detail_views.call_detail,name="call_detail"),
     # path('',include('SE_project.urls'))
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

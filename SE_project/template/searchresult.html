@@ -269,35 +269,40 @@
                 );
                 }
                 else{
-                var phone_ids=data.phone_ids;
+
+                var phone_ids=Object.keys(data.phone_infos);
+
+
                  $('#test-row').empty();
                 for (var i = 0; i < phone_ids.length; i++) {
                 $('#test-row').append(
                 '<div class="col-md">' +
                     '<div class="card bg-light text-dark">' +
-                    '<img class="card-img-top" src="1234.jpg" alt="Card image">' +
+                    '<img class="card-img-top" src="'+data.phone_infos[phone_ids[i]]["image"]+'" alt="Card image">' +
                     '<div class="card-body text-center">' +
-                    '<div class="card-title">'+phone_ids[i]+ '</div>' +
-                    '<div class="card-text">(可能的话)此处输入价格区间</div>' +
-                    '<a href="/detail/" class="btn btn-primary mt-2" id='+phone_ids[i]+'>查看详细信息</a>' +
+                    '<div class="card-title">'+data.phone_infos[phone_ids[i]]["name"]+ '</div>' +
+                    '<div class="card-text">'+data.phone_infos[phone_ids[i]]["price"]+'</div>' +
+                    '<a  class="btn btn-primary mt-2" id='+phone_ids[i]+'>查看详细信息</a>' +
                     '</div>' +
                     '</div>' +
                     '</div>'
                 );
                 $('#test-row').on('click', 'a.btn', function() {
     // 获取被点击的按钮的id
-    var id = $(this).attr('id');
-    var phone_data_with_id=data.phone_datas[id];
+    var id =$($(this)[0]).attr('id');
+
     // 发送post请求
     $.ajax({
-        url: '/detail/',
+        url: '/call_detail/',
         type: 'POST',
         data: {
-            'phone_data_with_id': phone_data_with_id
+            'phone_id': id
         },
         success: function(data) {
-            // 跳转到详情页
-            window.location.href = '/detail/';
+
+               window.location.href = "/detail/"+id;
+
+
         }
     });
 

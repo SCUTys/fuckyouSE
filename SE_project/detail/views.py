@@ -1,11 +1,15 @@
+
+
 import imageio
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import FileResponse
 import os
 
 
 from detail.mytools.Converter import JsonToTxtConverter
+from django.urls import reverse
+
 json2text = JsonToTxtConverter()
 from detail.WordCloudMaster import create_word_cloud as CWC
 
@@ -30,9 +34,9 @@ class WC_WorkerThread():
         return self.cloud_image_path
 
 # Create your views here.
-def detail_window(request):
-    data=request.POST.get('phone_data_with_id')
-    print(data)
+def detail_window(request, phone_id):
+    phone_id = phone_id
+    print("get phone id in detail_window",phone_id)
     print("waiting...")
     return render(request,"detail.html")
 import json
@@ -51,4 +55,20 @@ def generate_WC(request):
     else:
         return render(request, "detail.html")
 
+def call_detail(request):
+    context = {}
+    phone_id = ""
+    if request.method == 'POST':
+        # 获取POST数据
+        post_data = request.POST
+        phone_id = post_data.get("phone_id")
+        print("get phone_id", phone_id)
+    context = {
+        'phone_id': phone_id
+    }
+    ##将keyword储存到数据库中
 
+    # print("keyword",keyword)
+    print("context in call", context)
+    url = reverse("detail_phone_id", args=[phone_id])
+    return redirect(url)
