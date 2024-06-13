@@ -81,26 +81,26 @@ def mycrawler_db(keyword):
     data={}
     content = keyword
     # 获取爬取后得到的数据
-    spider.spider(cookie,keyword, page_num)
+    product_infos=spider.spider(cookie,keyword, page_num)
 
-    conn = sqlite3.connect('jd_comments.sqlite3')
-    cursor = conn.cursor()
-
-
-    # 执行SQL查询
-    cursor.execute("SELECT product_id, brief FROM product WHERE brief IS NOT NULL")
-
-    # 获取所有行
-    rows = cursor.fetchall()
+    # conn = sqlite3.connect('jd_comments.sqlite3')
+    # cursor = conn.cursor()
+    #
+    #
+    # # 执行SQL查询
+    # cursor.execute("SELECT product_id, brief FROM product WHERE brief IS NOT NULL")
+    #
+    # # 获取所有行
+    # rows = cursor.fetchall()
     # 将行转换为字典
-    data = {row[0]: json.loads(row[1]) for row in rows}
+
+    data=product_infos
     print(data)
 
     flag=True
     if data == {}:
         flag = False
     # 关闭数据库连接
-    conn.close()
     context = {
         "phone_infos": data,
         'task_done': True,

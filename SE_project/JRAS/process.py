@@ -10,12 +10,35 @@ main_path = os.path.abspath(os.path.join(PROJECT_DIR, os.pardir))
 #停止词文件目录
 stopwords_filename = os.path.join(main_path,'JRAS','data','stopwords.txt')
 bg_filename = os.path.join(main_path,'JRAS','data','bg.png')
-out_filename = os.path.join(main_path,'JRAS','data','output.png')
-
+out_filename_p = os.path.join(main_path,'JRAS','data','output_p.png')
+out_filename_n = os.path.join(main_path,'JRAS','data','output_n.png')
 # input:
 #   comments:string
 # return:
 #   new_comments:list
+def sentiment_analysis(comments):
+
+    #去除无重复
+    comments = remove_duplicates_and_emojis(comments)
+
+    sentimentslist = []
+
+    positive_comment, negative_comment = [], []
+
+    middle_comment_number = 0
+
+    for comment in comments:
+        s = SnowNLP(comment)
+        sentimentslist.append(s.sentiments)
+        if s.sentiments < 0.4:
+            negative_comment.append(comment)
+        elif s.sentiments >= 0.6:
+            positive_comment.append(comment)
+        else:
+            middle_comment_number += 1
+
+    return positive_comment, negative_comment, [len(positive_comment), middle_comment_number, len(negative_comment)]
+
 def remove_duplicates_and_emojis(comments):
     print("开始处理原始文件: \n")
 
@@ -61,22 +84,22 @@ import pandas as pd
 #   comment:string
 #return:
 #   [positive_size, negative_size]
-def sentiment_analysis(comments):
-
-    #去除无重复
-    comments = remove_duplicates_and_emojis(comments)
-
-    sentimentslist = []
-
-    for comment in comments:
-        s = SnowNLP(comment)
-        sentimentslist.append(s.sentiments)
-
-    # 2. 统计情感得分中积极和消极的数量
-    positive = len([s for s in sentimentslist if s >= 0.5])
-    negative = len([s for s in sentimentslist if s < 0.5])
-
-    return [positive, negative]
+# def sentiment_analysis(comments):
+#
+#     #去除无重复
+#     comments = remove_duplicates_and_emojis(comments)
+#
+#     sentimentslist = []
+#
+#     for comment in comments:
+#         s = SnowNLP(comment)
+#         sentimentslist.append(s.sentiments)
+#
+#     # 2. 统计情感得分中积极和消极的数量
+#     positive = len([s for s in sentimentslist if s >= 0.5])
+#     negative = len([s for s in sentimentslist if s < 0.5])
+#
+#     return [positive, negative]
 
 
 # coding='utf-8'
@@ -89,7 +112,7 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import pandas as pd
 
-def chinese_word_segmentation(comments):
+def chinese_word_segmentation_help(comments,flag=0):
     """
     分词并生成词云
 
@@ -105,7 +128,7 @@ def chinese_word_segmentation(comments):
     """
 
     #去除无重复
-    comments = remove_duplicates_and_emojis(comments)
+    # comments = remove_duplicates_and_emojis(comments)
 
     # 设置停用词
     jieba.analyse.set_stop_words(stopwords_filename)
@@ -142,6 +165,14 @@ def chinese_word_segmentation(comments):
     # # plt.imshow(wordcloud, interpolation='bilinear')
     # plt.axis('off')
 
+    if flag==0:
+        wordcloud.to_file(out_filename_p)
+    else:
+        wordcloud.to_file(out_filename_n)
 
-    wordcloud.to_file(out_filename)
-    return out_filename
+def chinese_word_segmentation(comments):
+    comments_p,comments_n,_=sentiment_analysis(comments)
+
+    chinese_word_segmentation_help(comments_p, 0)
+    chinese_word_segmentation_help(comments_n, 1)
+    return out_filename_p,out_filename_n

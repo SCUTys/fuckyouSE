@@ -38,6 +38,7 @@ urlpatterns = [
 
     path("detail/", detail_views.call_detail,name="detail"),
     path("detail/<phone_id>", detail_views.detail_window,name="detail_phone_id"),
+    path("check_comment/", detail_views.check_comment,name="check_comment"),
 
 
     path("latestgood/", latestgood_views.latestgood_window,name="latestgood"),

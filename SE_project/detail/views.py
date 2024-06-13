@@ -1,5 +1,6 @@
 import base64
 import sqlite3
+from threading import Thread
 
 import imageio
 from django.http import JsonResponse, HttpResponse
@@ -7,7 +8,7 @@ from django.shortcuts import render, redirect
 from django.http import FileResponse
 import os
 
-
+from JRAS import  spider
 from detail.mytools.Converter import JsonToTxtConverter
 from django.urls import reverse
 
@@ -17,22 +18,22 @@ from detail.WordCloudMaster import create_word_cloud as CWC
 # PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
-class WC_WorkerThread():
-    def __init__(self, json_path, image_path):
+class WC_WorkerThread(Thread):
+    def __init__(self,product_id):
         super().__init__()
-        self.json_path = json_path
-        self.image_path = image_path
-        self.cloud_image_path=""
+        self.product_id=product_id
     def run(self):
-        txt_path = json2text.convert_to_txt_file(self.json_path)
-        print(txt_path, self.image_path)
-        ##后续将文件存到数据库中
-        self.cloud_image_path = CWC.create_wordscloud(txt_path, self.image_path)
-        print('路径: ', txt_path, self.image_path, self.cloud_image_path, sep='\n')
-        # bat_file_path = os.path.join(os.path.dirname(self.json_path), "generateWordCloud.bat")
-        # subprocess.run([bat_file_path])
-    def get_wcpath(self):
-        return self.cloud_image_path
+        comment=spider.spider_comment(self.product_id)
+        conn = sqlite3.connect('jd_comments.sqlite3')
+        cursor = conn.cursor()
+        cursor.execute(f"UPDATE product SET comment ='{comment}' WHERE product_id = {self.product_id}")
+        conn.commit()
+        conn.close()
+
+
+
+
+
 def generate_word_cloud(comments, image_path):
     #根据字符串生成词云
     # comments = comments
@@ -58,14 +59,20 @@ def detail_window(request, phone_id):
 
     cursor.execute(f"SELECT brief FROM product WHERE product_id = {phone_id}")
     phone_info = cursor.fetchone()[0]
+    cursor.execute(f"SELECT detail FROM product WHERE product_id = {phone_id}")
+    phone_detail = cursor.fetchone()[0]
+
     conn.close()
     phone_info=json.loads(phone_info)
+    phone_detail=json.loads(phone_detail)
     context={
         'phone_id':phone_id,
         'phone_name':phone_info['name'],
         'phone_price':phone_info['price'],
         'phone_img':phone_info['image'],
+        'details':phone_detail,
     }
+
 
     return render(request,"detail.html",context)
 import json
@@ -104,6 +111,23 @@ def generate_WC0(request):
     else:
         return JsonResponse(context)
 from JRAS import process
+
+def check_comment(request):
+    if request.method == "POST":
+        phone_id = request.POST.get("phone_id")
+        conn = sqlite3.connect('jd_comments.sqlite3')
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT comment FROM product WHERE product_id = {phone_id}")
+        comment = cursor.fetchone()[0]
+        conn.close()
+        if comment!="":
+            return JsonResponse({ 'has_comment': True})
+        else:
+            return JsonResponse({ 'has_comment': False})
+    else:
+        return JsonResponse()
+
+
 def generate_WC(request):
     context={}
     if request.method == "POST":
@@ -118,13 +142,16 @@ def generate_WC(request):
         conn.close()
 
 
-        wc_path = process.chinese_word_segmentation(comment)
-        result_img = open(wc_path, "rb").read()
+        wc_path_p,wc_path_n = process.chinese_word_segmentation(comment)
+        result_img_p = open(wc_path_p, "rb").read()
+        result_img_n = open(wc_path_n, "rb").read()
         print("result_img")
         # 将图片转成json
-        encoded_img = base64.b64encode(result_img).decode()
+        encoded_img_p = base64.b64encode(result_img_p).decode()
+        encoded_img_n = base64.b64encode(result_img_n).decode()
         context = {
-            'result_img': encoded_img
+            'result_img_p': encoded_img_p,
+            'result_img_n': encoded_img_n
         }
         return JsonResponse(context)
     else:
@@ -143,8 +170,10 @@ def call_detail(request):
     context = {
         'phone_id': phone_id
     }
-    ##将keyword储存到数据库中
 
+
+
+    ##将keyword储存到数据库中
     # print("keyword",keyword)
     print("context in call", context)
     url = reverse("detail_phone_id", args=[phone_id])

@@ -1,6 +1,8 @@
 # coding='utf-8'
 import argparse
 import os
+from threading import Thread
+
 import requests
 import json
 import time
@@ -12,7 +14,17 @@ import pandas as pd
 from tqdm import tqdm
 import sqlite3
 
-
+class WC_WorkerThread(Thread):
+    def __init__(self,product_id):
+        super().__init__()
+        self.product_id=product_id
+    def run(self):
+        comment=spider_comment(self.product_id)
+        conn = sqlite3.connect('jd_comments.sqlite3')
+        cursor = conn.cursor()
+        cursor.execute(f"UPDATE product SET comment ='{comment}' WHERE product_id = {self.product_id}")
+        conn.commit()
+        conn.close()
 
 #input:
 #   page_num: 爬取页数， 默认为1
@@ -141,13 +153,19 @@ def spider(cookie, content, page_num=1):
             continue
 
         detail = spider_parameter(cookie, product_id)
-        comment = spider_comment(product_id)
+
+        comment =""
 
         cursor.execute(f"INSERT INTO product VALUES (?,json(?), json(?),?)",
                        (product_id, json.dumps(value), json.dumps(detail), comment))
 
     conn.commit()
     cursor.close()
+    for product_id,_ in product_ids.items():
+        wc_workerThread = WC_WorkerThread(product_id)
+        wc_workerThread.start()
+
+    return product_ids
 
 
 
