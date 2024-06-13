@@ -129,32 +129,34 @@ def spider(cookie, content, page_num=1):
     conn = sqlite3.connect('jd_comments.sqlite3')
     cursor = conn.cursor()
 
-    product_ids = spider_product(cookie, content, page_num)
+    cursor.execute(f"CREATE TABLE IF NOT EXISTS product (product_id TEXT, brief JSON, detail JSON, comment TEXT)")
 
-    store_data = {}
+    product_ids = spider_product(cookie, content, page_num)
 
     for product_id, value in product_ids.items():
 
 
-        # cursor.execute(f"SELECT * FROM information_schema.tables WHERE table_name = 'phone-'{product_id};")
-        # if cursor.fetchone() is not None:
-        #     continue
-        #
-        # cursor.execute("")
+        cursor.execute(f"SELECt * FROM product WHERE product_id = {product_id}")
+        if cursor.fetchone() is not None:
+            continue
 
-        store_data[product_id] = {}
-        store_data[product_id]['brief'] = value
-        store_data[product_id]['detail'] = spider_parameter(cookie, product_id)
-        store_data[product_id]['comment'] = spider_comment(product_id)
+        detail = spider_parameter(cookie, product_id)
+        comment = spider_comment(product_id, page_num)
 
-    #将数据存到数据库
+        cursor.execute(f"INSERT INTO product VALUES (?,json(?), json(?),?)",
+                       (product_id, json.dumps(value), json.dumps(detail), comment))
+
+    conn.commit()
+    cursor.close()
 
 
 
 if __name__ == '__main__':
+
+
     cookie = 'shshshfpa=461eef8c-5592-f1b8-1863-c296acf144e8-1713490842; shshshfpx=461eef8c-5592-f1b8-1863-c296acf144e8-1713490842; __jdu=17134908428041536521440; __jdv=76161171|www.bing.com|-|referral|-|1716431528090; pinId=gpXgCqz9ZronTwmVTfLR3g; pin=jd_hoCgxwDRQSiQ; unick=jd_es2lk4sv85zfx8; _tp=ezZG5SVF%2BP5fpYqKEfdi1Q%3D%3D; _pst=jd_hoCgxwDRQSiQ; qrsc=3; TrackID=1eTKDQOFnNxPQGaszQJ7torU2Qqbg4mvGoH5prNMNLNIm71TXDBqLjxi78yUCPyDwa0pDT8mChvTco3Xst3YSEWEgWQFoeFaWA-CmXkK0gFqOiJJHKXJa6DQFSW9yuNM8; thor=0154BEF7F3ABAD2AC9F8B853DF438E2DA2332B6EEBDE1EF9CABCA0BF63AC50772C4CE028EA18C2550B6EDD12A9510B9DB71B1A0EB13F0A7415C17FEAD235FF17DB3AC1D70F66C4FED351BC4E47D2FDC671664E42EAB6C140E1C8A7B1704898B5D433763206537128AC9359EA24D83CBBD8E0075E5E5208E30CE94F3D41DC9E047753B556FBF6D0CE2F46D9426B7250FE230EF6636AC5F02A70E2D946B2626A28; flash=2_3aLITYetDX6Zi8jYaqTco3DK5oucL4MKdqqXvSC8wGcIrOEq7T49XQ89zr-XdZ0V-g41NpdhIsDt0oi97TJPWi0fdbNyuW5lcLgFChRqLi5dQOgmg9O-BkLfVkSaa_iejQe0ApYr-ASEdTUFG_BWlG9U70B9qdmobGIWHYv-fFp*; areaId=19; ipLoc-djd=19-1601-0-0; 3AB9D23F7A4B3CSS=jdd03TNWWNPEFMMCF3K34TQT4W2L7W2ENOCVPKMVTXU3VLXUIVJKPCXUAAGMBMZQ5ZR3YEUK7DYB4543KPOQHT4F3VEYRU4AAAAMP5NKXCPQAAAAADEXWQJFOS6MTNQX; _gia_d=1; jsavif=1; jsavif=1; xapieid=jdd03TNWWNPEFMMCF3K34TQT4W2L7W2ENOCVPKMVTXU3VLXUIVJKPCXUAAGMBMZQ5ZR3YEUK7DYB4543KPOQHT4F3VEYRU4AAAAMP5NKXCPQAAAAADEXWQJFOS6MTNQX; rkv=1.0; __jda=143920055.17134908428041536521440.1713490843.1717553599.1717640026.8; __jdc=143920055; shshshfpb=BApXclwtd6OpA6EGcp9UfDKqqq-EXN_UyBlEID21s9xJ1MiXwPIC2; 3AB9D23F7A4B3C9B=TNWWNPEFMMCF3K34TQT4W2L7W2ENOCVPKMVTXU3VLXUIVJKPCXUAAGMBMZQ5ZR3YEUK7DYB4543KPOQHT4F3VEYRU4; avif=1; __jdb=143920055.5.17134908428041536521440|8.1717640026'
-    product_ids = spider_product(cookie,
-         '5G', 2)
+    # product_ids = spider_product(cookie,
+    #      '5G', 2)
 
     spider(cookie, '5G', 2)
 
