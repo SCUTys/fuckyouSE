@@ -24,12 +24,12 @@ word_size=600
 
 #分词过滤函数
 def cut(input_filename):
-    content = '\n'.join([line.strip()
-                         for line in codecs.open(input_filename, 'r', 'utf-8')
-                         if len(line.strip()) > 0])
+    # content = '\n'.join([line.strip()
+    #                      for line in codecs.open(input_filename, 'r', 'utf-8')
+    #                      if len(line.strip()) > 0])
     stopwords = set([line.strip()
                      for line in codecs.open(stopwords_filename, 'r', 'utf-8')])
-
+    content=input_filename
     segs = jieba.cut(content)
     words = []
     for seg in segs:
@@ -71,11 +71,11 @@ def create_wordscloud(input_filename,background_picture_filename):
         bimgColors = ImageColorGenerator(bimg)
         wordcloud.recolor(color_func=bimgColors)
 
-        # output_filename = prefix + '_' + input_prefix + '.png'
-        filepath, _ = os.path.splitext(input_filename)
+        # # output_filename = prefix + '_' + input_prefix + '.png'
+        # filepath, _ = os.path.splitext(input_filename)
         pic_name, _ = os.path.splitext(os.path.basename(background_picture_filename))
         # output_filename = os.path.join(main_path,'resource',input_prefix+'_cloud.png')
-        output_filename = filepath + '_' + pic_name + '_cloud.png'
+        output_filename = "output" + '_' + pic_name + '_cloud.png'
         print('Saving', output_filename)
         wordcloud.to_file(output_filename)
         return output_filename

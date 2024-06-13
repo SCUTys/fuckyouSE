@@ -131,8 +131,8 @@ def spider(cookie, content, page_num=1):
 
     cursor.execute(f"CREATE TABLE IF NOT EXISTS product (product_id TEXT, brief JSON, detail JSON, comment TEXT)")
 
-    product_ids = spider_product(cookie, content, page_num)
-
+    product_ids = spider_product(cookie, content, page_num+1)
+    # print("product_ids", product_ids)
     for product_id, value in product_ids.items():
 
 
@@ -141,7 +141,7 @@ def spider(cookie, content, page_num=1):
             continue
 
         detail = spider_parameter(cookie, product_id)
-        comment = spider_comment(product_id, page_num)
+        comment = spider_comment(product_id)
 
         cursor.execute(f"INSERT INTO product VALUES (?,json(?), json(?),?)",
                        (product_id, json.dumps(value), json.dumps(detail), comment))
