@@ -10,3 +10,8 @@ body::before{
     height: 56px;
 }
 
+@media (min-width: 768px) {
+    .news-main{
+        width: 100%;
+    }
+}
