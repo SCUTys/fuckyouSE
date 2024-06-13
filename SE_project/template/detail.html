@@ -8,6 +8,7 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/stylefordetail.css"> 
     <script src="/js/echarts.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-3.2.1.js"></script>
 </head>
 <body>
     <div class="container">
@@ -54,14 +55,14 @@
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-md">
-                    <img src="1234.jpg" alt="1" class="img-fluid" />
+                    <img src={{ phone_img }} alt="1" class="img-fluid"/>
                 </div>
                 <div class="col-md p-3">
-                    <h2>xxxxxxx(这里填充商品名)</h2>
+                    <h2>{{ phone_name }}</h2>
                     <table class="table table-hover table-bordered table-sm">
                         <thead>
                             <th scope="col" class="col-lg-2">价格</th>
-                            <th scope="col" class="col-lg-3">Mark</th>
+                            <th scope="col" class="col-lg-3">{{ phone_price }}</th>
                         </thead>
                         <tbody>
                             {%for details in detaillist%}
@@ -142,8 +143,10 @@
                             </tr>                    -->                   
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-primary">主要按钮</button>
+
+
                 </div>
+
             </div>
         </div>
     </section>
@@ -159,8 +162,28 @@
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-md-4">
-                    <img src="img/1.svg" alt="1" class="img-fluid" />
+                    <img alt="1" class="img-fluid" id="wc" />
+                     <button type="button" class="btn btn-primary" id="word_cloud">生成词云</button>
                 </div>
+                 <script>
+                 var phone_id = "{{phone_id}}";
+                        $(document).ready(function(){
+                            $("#word_cloud").click(function(){
+                                $.ajax({
+                                    url: "/generate_WC/",
+                                    type: "post",
+                                    data:{
+                                        'phone_id': phone_id,
+                                    },
+                                    success: function(data) {
+                                    var img = new Image();
+                                    img.src = 'data:image/png;base64,'+data.result_img;
+                                    document.getElementById('wc').src = img.src;
+                                    }
+                                });
+                            });
+                        });
+                    </script>
                 <div id="main" style="width: 40%; height:400px;">
                     <script type="text/javascript">
                         var myChart = echarts.init(document.getElementById('main'));
