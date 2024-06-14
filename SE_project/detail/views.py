@@ -111,7 +111,7 @@ def generate_WC0(request):
     else:
         return JsonResponse(context)
 from JRAS import process
-
+from JRAS import get_summary
 def check_comment(request):
     if request.method == "POST":
         phone_id = request.POST.get("phone_id")
@@ -149,14 +149,39 @@ def generate_WC(request):
         # 将图片转成json
         encoded_img_p = base64.b64encode(result_img_p).decode()
         encoded_img_n = base64.b64encode(result_img_n).decode()
+        print(os.environ)
+
+
+
         context = {
             'result_img_p': encoded_img_p,
-            'result_img_n': encoded_img_n
+            'result_img_n': encoded_img_n,
+
         }
+
+
         return JsonResponse(context)
     else:
         return JsonResponse(context)
 
+
+def generate_summary(request):
+    result = ""
+    flag=True
+    has_token=True
+    if request.method == "POST":
+        phone_id = request.POST.get("phone_id")
+        try:
+         result=get_summary.get_summary('jd_comments.sqlite3', phone_id)
+        except Exception as e:
+            print("error",e)
+            flag=False
+        if result[0]=="":
+            flag=False
+    if len(os.environ["REPLICATE_API_TOKEN"])<20:
+        has_token=False
+
+    return JsonResponse({ 'result': result, 'status': flag, 'has_token': has_token})
 
 
 def call_detail(request):
@@ -175,7 +200,7 @@ def call_detail(request):
 
     ##将keyword储存到数据库中
     # print("keyword",keyword)
-    print("context in call", context)
+    # print("context in call", context)
     url = reverse("detail_phone_id", args=[phone_id])
     return redirect(url)
     # return  render(request, "detail.html", context)

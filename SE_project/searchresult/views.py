@@ -1,4 +1,5 @@
 import json
+import os
 from time import sleep
 from django.shortcuts import HttpResponse, redirect, reverse
 from django.http import HttpResponse, JsonResponse
@@ -11,6 +12,7 @@ import threading
 # Create your views here.
 # @ajax
 flag = False
+
 
 
 def mycrawler(keyword):
@@ -75,8 +77,8 @@ def mycrawler_brief(keyword):
     }
     return context
 
-def mycrawler_db(keyword):
-    cookie = "shshshfpa=461eef8c-5592-f1b8-1863-c296acf144e8-1713490842; shshshfpx=461eef8c-5592-f1b8-1863-c296acf144e8-1713490842; __jdu=17134908428041536521440; __jdv=76161171|www.bing.com|-|referral|-|1716431528090; pinId=gpXgCqz9ZronTwmVTfLR3g; pin=jd_hoCgxwDRQSiQ; unick=jd_es2lk4sv85zfx8; _tp=ezZG5SVF%2BP5fpYqKEfdi1Q%3D%3D; _pst=jd_hoCgxwDRQSiQ; qrsc=3; TrackID=1eTKDQOFnNxPQGaszQJ7torU2Qqbg4mvGoH5prNMNLNIm71TXDBqLjxi78yUCPyDwa0pDT8mChvTco3Xst3YSEWEgWQFoeFaWA-CmXkK0gFqOiJJHKXJa6DQFSW9yuNM8; thor=0154BEF7F3ABAD2AC9F8B853DF438E2DA2332B6EEBDE1EF9CABCA0BF63AC50772C4CE028EA18C2550B6EDD12A9510B9DB71B1A0EB13F0A7415C17FEAD235FF17DB3AC1D70F66C4FED351BC4E47D2FDC671664E42EAB6C140E1C8A7B1704898B5D433763206537128AC9359EA24D83CBBD8E0075E5E5208E30CE94F3D41DC9E047753B556FBF6D0CE2F46D9426B7250FE230EF6636AC5F02A70E2D946B2626A28; flash=2_3aLITYetDX6Zi8jYaqTco3DK5oucL4MKdqqXvSC8wGcIrOEq7T49XQ89zr-XdZ0V-g41NpdhIsDt0oi97TJPWi0fdbNyuW5lcLgFChRqLi5dQOgmg9O-BkLfVkSaa_iejQe0ApYr-ASEdTUFG_BWlG9U70B9qdmobGIWHYv-fFp*; areaId=19; ipLoc-djd=19-1601-0-0; 3AB9D23F7A4B3CSS=jdd03TNWWNPEFMMCF3K34TQT4W2L7W2ENOCVPKMVTXU3VLXUIVJKPCXUAAGMBMZQ5ZR3YEUK7DYB4543KPOQHT4F3VEYRU4AAAAMP5NKXCPQAAAAADEXWQJFOS6MTNQX; _gia_d=1; jsavif=1; jsavif=1; xapieid=jdd03TNWWNPEFMMCF3K34TQT4W2L7W2ENOCVPKMVTXU3VLXUIVJKPCXUAAGMBMZQ5ZR3YEUK7DYB4543KPOQHT4F3VEYRU4AAAAMP5NKXCPQAAAAADEXWQJFOS6MTNQX; rkv=1.0; __jda=143920055.17134908428041536521440.1713490843.1717553599.1717640026.8; __jdc=143920055; shshshfpb=BApXclwtd6OpA6EGcp9UfDKqqq-EXN_UyBlEID21s9xJ1MiXwPIC2; 3AB9D23F7A4B3C9B=TNWWNPEFMMCF3K34TQT4W2L7W2ENOCVPKMVTXU3VLXUIVJKPCXUAAGMBMZQ5ZR3YEUK7DYB4543KPOQHT4F3VEYRU4; avif=1; __jdb=143920055.5.17134908428041536521440|8.1717640026"
+def mycrawler_db(keyword,cookie):
+    cookie = cookie
     page_num = 1
     data={}
     content = keyword
@@ -115,8 +117,9 @@ def mycrawler_db(keyword):
 
 def check_task(request):
     keyword = request.POST.get('keyword')
+    cookie=request.POST.get('cookie')
     print("data", keyword)
-    data = mycrawler_db(keyword)
+    data = mycrawler_db(keyword,cookie)
     if data['status']:
         print("task success")
 
@@ -139,25 +142,34 @@ def check_task(request):
 
 # def waiting_page(request):
 #     return render(request, 'waiting.html')
-def searchresult_window(request, keyword):
-    return render(request, 'searchresult.html', {"keyword": keyword})
+def searchresult_window(request, keyword,cookie):
+    return render(request, 'searchresult.html', {"keyword": keyword,'cookie':cookie})
 
 
 def call_searchresult(request):
     context = {}
     keyword = ""
+    cookie=""
     if request.method == 'POST':
         # 获取POST数据
         post_data = request.POST
         keyword = post_data.get("keyword")
+        cookie=post_data.get("cookie")
+        token=post_data.get("token")
+
+        os.environ["REPLICATE_API_TOKEN"]=token
+
         print("get keyword", keyword)
     context = {
-        'keyword': keyword
+        'keyword': keyword,
+        'cookie': cookie
     }
     ##将keyword储存到数据库中
 
     # print("keyword",keyword)
     print("context in call", context)
-    url = reverse("searchresult_keyword", args=[keyword])
+
+    url = reverse("searchresult_keyword_cookie", args=[keyword,cookie])
+
     return redirect(url)
 

@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/stylefordetail.css"> 
-    <script src="/js/echarts.js"></script>
+    <script src="/static/js/echarts.js"></script>
         <link rel="stylesheet" href="/static/styleforsearch.css">
     <link rel="stylesheet" href="/static/styleforload.css">
     <script type="text/javascript" src="/static/js/jquery-3.2.1.js"></script>
@@ -17,7 +17,7 @@
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
             <div class="container">
     
-                <a href="#" class="navbar-brand">我是神里绫华的()</a>
+                <a href="#" class="navbar-brand">钢铁直男の5G手机爬虫乐园</a>
     
                 <!-- Toggler Button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
@@ -75,74 +75,6 @@
                                     </tr>
                                 {% endif %}
                             {%endfor%}
-                            <!-- <tr class="table-selfdefined">
-                                <th scope="row">屏幕尺寸</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">屏幕分辨率</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">屏幕刷新率</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">运行内存</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">机身内存</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">前置摄像头</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">后置摄像头</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">电池容量</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">充电功率</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">无线充电</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">价格</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">CPU</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">操作系统</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">上市时间</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">颜色</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">好评率</th>
-                                <td>Mark</td>
-                            </tr>
-                            <tr class="table-selfdefined">
-                                <th scope="row">近期销量</th>
-                                <td>Mark</td>
-                            </tr>                    -->                   
                         </tbody>
                     </table>
                     <button type="button" class="btn btn-primary">加入对比</button>
@@ -153,9 +85,36 @@
 
 
     <section class="p-5">
-        <div class="container">
+        <div class="container",id="llmdiv">
+        <button type="button" class="btn btn-primary" id="LLM">使用大模型进行总结</button>
 
         </div>
+        <script>
+            var phone_id = "{{phone_id}}";
+            $(document).ready(function(){
+                $("#LLM").click(function(){
+                    $.ajax({
+                        url: "/generate_summary/",
+                        type: "post",
+                        data:{
+                            'phone_id': phone_id,
+                        },
+                        success: function(data) {
+                            if(data.has_token==false){
+
+                               window.alert("请先输入正确token");
+                            }
+                            if (data.status==false){
+                       window.alert("大模型总结失败,请检查输入的token后重试");
+
+                            }
+                            else
+                            $('#llmdiv').append('<h2>'+data.result+'</h2>')
+                        }
+                    });
+                });
+            });
+        </script>
     </section>
 
     <section class="p-5">
@@ -188,30 +147,112 @@
         </div>
                  <script>
                  var phone_id = "{{phone_id}}";
-<!--                        $(document).ready(function(){-->
-<!--                            $("#word_cloud").click(function(){-->
+                        // function poll_task0(){
+                        //         $.ajax({
+                        //             url: "/generate_WC/",
+                        //             type: "post",
+                        //             data:{
+                        //                 'phone_id': phone_id,
+                        //             },
+                        //             success: function(data) {
+                        //             $('#test-row').empty();
+                        //             var img = new Image();
+                        //             img.src = 'data:image/png;base64,'+data.result_img_p;
+                        //             $('#test-row').append('<h2>正面评论词云图</h2>')
+                        //             $('#test-row').append('<img alt="1" class="img-fluid col-4 d-flex" src= '+img.src+' id="wc" />');
+                        //             img.src = 'data:image/png;base64,'+data.result_img_n;
+                        //             $('#test-row').append('<h2>负面评论词云图</h2>')
+                        //             $('#test-row').append('<img alt="1" class="img-fluid col-4 d-flex" src= '+img.src+' id="wc" />');
+                        //             $("#word_cloud").text("词云生成成功");
+                        //             }
+                        //         });
+                        // }
                         function poll_task0(){
-                                $.ajax({
-                                    url: "/generate_WC/",
-                                    type: "post",
-                                    data:{
-                                        'phone_id': phone_id,
-                                    },
-                                    success: function(data) {
-                                    $('#test-row').empty();
-                                    var img = new Image();
-                                    img.src = 'data:image/png;base64,'+data.result_img_p;
-                                    $('#test-row').append('<h2>正面评论词云图</h2>')
-                $('#test-row').append('<img alt="1" class="img-fluid" src= '+img.src+' id="wc" />');
-                 img.src = 'data:image/png;base64,'+data.result_img_n;
-                  $('#test-row').append('<h2>负面评论词云图</h2>')
-                $('#test-row').append('<img alt="1" class="img-fluid" src= '+img.src+' id="wc" />');
-                                    $("#word_cloud").text("词云生成成功");
-                                    }
-                                });
-                                }
-<!--                            });-->
-<!--                        });-->
+    $.ajax({
+        url: "/generate_WC/",
+        type: "post",
+        data:{
+            'phone_id': phone_id,
+        },
+        success: function(data) {
+            console.log(data);
+
+            $('#test-row').empty();
+            var row = $('<div class="row"></div>');
+            var imgPos = new Image();
+            imgPos.src = 'data:image/png;base64,'+data.result_img_p;
+            var colPos = $('<div class="col-md-4"></div>');
+            colPos.append('<h2>正面评论词云图</h2>');
+            colPos.append($('<img alt="正面评论词云图" class="img-fluid" src= '+imgPos.src+' id="wc_pos" />'));
+            row.append(colPos);
+
+            var imgNeg = new Image();
+            imgNeg.src = 'data:image/png;base64,'+data.result_img_n;
+            var colNeg = $('<div class="col-md-4"></div>');
+            colNeg.append('<h2>负面评论词云图</h2>');
+            colNeg.append($('<img alt="负面评论词云图" class="img-fluid" src= '+imgNeg.src+' id="wc_neg" />'));
+            row.append(colNeg);
+
+            var echartCol = $('<div class="col-md-4"></div>');
+            echartCol.append('<div id="echart-container" style="width: 100%; height: 400px;"></div>');
+            row.append(echartCol);
+            $('#test-row').append(row);
+            $("#word_cloud").text("词云生成成功");
+
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('echart-container'));
+
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    text: '评论分布',
+                    //subtext: '正面、中立与负面',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'item'
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left'
+                },
+                series: [
+                    {
+                        name: '评论数',
+                        type: 'pie',
+                        radius: ['40%', '70%'],
+                        avoidLabelOverlap: false,
+                        label: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            label: {
+                                show: true,
+                                fontSize: '30',
+                                fontWeight: 'bold'
+                            }
+                        },
+                        labelLine: {
+                            show: false
+                        },
+                        data: [
+                            {value: 30, name: '正面评论'},
+                            {value: 30, name: '中立评论'},
+                            {value: 30, name: '负面评论'}
+                        ]
+                    }
+                ]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+
+
+        }
+    });
+}
+
                         function poll_task(){
                             $.ajax({
                                 url: "/check_comment/",
@@ -235,32 +276,55 @@
 
                         poll_task();
                     </script>
-                <div id="main" style="width: 40%; height:400px;">
-                    <script type="text/javascript">
-                        var myChart = echarts.init(document.getElementById('main'));
 
-                        var option = {
-                            title: {
-                                text: ''
-                            },
-                            tooltip: {},
-                            legend: {
-                                data:['销量']
-                            },
-                            xAxis: {
-                                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-                            },
-                            yAxis: {},
-                            series: [{
-                                name: '销量',
-                                type: 'bar',
-                                data: [5, 20, 36, 10, 10, 20]
-                            }]
-                        };
+                <script>
+                    var myChart = echarts.init(document.getElementById('echart-container'));
 
-                        myChart.setOption(option);
-                    </script>
-                </div>
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '评论分布',
+            subtext: '正面、中立与负面',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left'
+        },
+        series: [
+            {
+                name: '评论数',
+                type: 'pie',
+                radius: ['40%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: [
+                    {value: 30, name: '正面评论'},
+                    {value: 30, name: '中立评论'},
+                    {value: 30, name: '负面评论'}
+                ]
+            }
+        ]
+    };
+    myChart.setOption(option);
+                </script>
+
             </div>
         </div>
     </section>
