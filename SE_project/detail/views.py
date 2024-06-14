@@ -127,7 +127,24 @@ def check_comment(request):
     else:
         return JsonResponse()
 
+def add_to_compare(request):
+    flag=True
+    if request.method == "POST":
+        phone_id = request.POST.get("phone_id")
+        conn = sqlite3.connect('jd_comments.sqlite3')
+        cursor = conn.cursor()
+        try:
+            cursor.execute(f"insert into compare values ({phone_id})")
+            conn.commit()
+        except Exception as e:
+            print("error",e)
+            flag=False
+        conn.close()
 
+    else:
+        flag=False
+
+    return JsonResponse({'insert_status': flag})
 def generate_WC(request):
     context={}
     if request.method == "POST":
@@ -142,7 +159,7 @@ def generate_WC(request):
         conn.close()
 
 
-        wc_path_p,wc_path_n = process.chinese_word_segmentation(comment)
+        wc_path_p,wc_path_n,com_info = process.chinese_word_segmentation(comment)
         result_img_p = open(wc_path_p, "rb").read()
         result_img_n = open(wc_path_n, "rb").read()
         print("result_img")
@@ -156,6 +173,7 @@ def generate_WC(request):
         context = {
             'result_img_p': encoded_img_p,
             'result_img_n': encoded_img_n,
+            'com_info':com_info
 
         }
 
@@ -178,7 +196,7 @@ def generate_summary(request):
             flag=False
         if result[0]=="":
             flag=False
-    if len(os.environ["REPLICATE_API_TOKEN"])<20:
+    if "REPLICATE_API_TOKEN" not in os.environ.keys() or os.environ["REPLICATE_API_TOKEN"] is None :
         has_token=False
 
     return JsonResponse({ 'result': result, 'status': flag, 'has_token': has_token})

@@ -55,7 +55,8 @@ urlpatterns = [
     ##details_url
     path("generate_WC/", detail_views.generate_WC, name='generate_WC'),
     path("generate_summary/", detail_views.generate_summary, name='generate_summary'),
-
+    path("add_to_compare/", detail_views.add_to_compare, name='add_to_compare'),
+    path("delete_compare/", compare_views.delete_compare, name='delete_compare'),
     path('check_task/', searchresult_views.check_task,name="check_task"),
     path('mycrawler/', searchresult_views.mycrawler,name="mycrawler"),
 

@@ -171,8 +171,8 @@ def chinese_word_segmentation_help(comments,flag=0):
         wordcloud.to_file(out_filename_n)
 
 def chinese_word_segmentation(comments):
-    comments_p,comments_n,_=sentiment_analysis(comments)
+    comments_p,comments_n,com_info=sentiment_analysis(comments)
 
     chinese_word_segmentation_help(comments_p, 0)
     chinese_word_segmentation_help(comments_n, 1)
-    return out_filename_p,out_filename_n
+    return out_filename_p,out_filename_n,com_info

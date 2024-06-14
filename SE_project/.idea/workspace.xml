@@ -4,18 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feab3b9e-34ff-47e5-82c2-f2c5b761f07d" name="更改" comment="更改">
-      <change afterPath="$PROJECT_DIR$/static/js/echarts.js" afterDir="false" />
+    <list default="true" id="feab3b9e-34ff-47e5-82c2-f2c5b761f07d" name="更改" comment="加入summary">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JRAS/data/output_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/JRAS/data/output_n.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JRAS/data/output_p.png" beforeDir="false" afterPath="$PROJECT_DIR$/JRAS/data/output_p.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JRAS/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/JRAS/process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JRAS/spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/JRAS/spider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SE_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/SE_project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compare/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/compare/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/detail/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/detail/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jd_comments.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/jd_comments.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchresult/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/searchresult/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/compare.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/compare.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/searchresult.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/searchresult.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/test-mainwindow.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/test-mainwindow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/waiting.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/waiting.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +118,14 @@
       <updated>1717567995403</updated>
       <workItem from="1717567997595" duration="2722000" />
     </task>
+    <task id="LOCAL-00001" summary="加入summary">
+      <created>1718368265255</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718368265255</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,5 +141,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="加入summary" />
+    <option name="LAST_COMMIT_MESSAGE" value="加入summary" />
   </component>
 </project>

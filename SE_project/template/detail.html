@@ -29,14 +29,14 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Navigation Items -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">返回主页</a>
+                            <a class="nav-link" href="/test-mainwindow/">返回主页</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">对比</a>
+                            <a class="nav-link" href="/compare/">对比</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">登录/注册</a>
-                        </li>
+<!--                        <li class="nav-item">-->
+<!--                            <a class="nav-link" href="#">登录/注册</a>-->
+<!--                        </li>-->
     
                         <!-- Dropdown Menu for Small Screens -->
                         <li class="nav-item dropdown d-lg-none">
@@ -77,8 +77,30 @@
                             {%endfor%}
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-primary">加入对比</button>
+                    <button type="button" class="btn btn-primary" id="add_cmp">加入对比</button>
                 </div>
+                <script>
+                    var phone_id = "{{phone_id}}";
+                    $(document).ready(function(){
+                        $("#add_cmp").click(function(){
+                            $.ajax({
+                                url: "/add_to_compare/",
+                                type: "post",
+                                data:{
+                                    'phone_id': phone_id,
+                                },
+                                success: function(data) {
+                                if (data.insert_status==false){
+                                    window.alert("加入失败或已加入对比");
+                                    }
+                                    else {
+                                    window.alert("加入成功");
+                                    }
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
         </div>
     </section>
@@ -86,7 +108,7 @@
 
     <section class="p-5">
         <div class="container",id="llmdiv">
-        <button type="button" class="btn btn-primary" id="LLM">使用大模型进行总结</button>
+        <button type="button" class="btn btn-primary" id="LLM" disabled="true">等待评论爬取</button>
 
         </div>
         <script>
@@ -104,7 +126,7 @@
 
                                window.alert("请先输入正确token");
                             }
-                            if (data.status==false){
+                            else if (data.status==false){
                        window.alert("大模型总结失败,请检查输入的token后重试");
 
                             }
@@ -237,9 +259,9 @@
                             show: false
                         },
                         data: [
-                            {value: 30, name: '正面评论'},
-                            {value: 30, name: '中立评论'},
-                            {value: 30, name: '负面评论'}
+                            {value:  data.com_info[0] , name: '正面评论'},
+                            {value:   data.com_info[1] , name: '中立评论'},
+                            {value:   data.com_info[2] , name: '负面评论'}
                         ]
                     }
                 ]
@@ -264,6 +286,9 @@
                                     if(data.has_comment == true){
 <!--                                        $("#word_cloud").removeAttr("disabled");-->
                                          $("#word_cloud").text("评论爬取成功,正在生成词云");
+                                         $("#LLM").text("点击生成大模型总结");
+                                            $("#LLM").removeAttr("disabled");
+
                                          poll_task0();
                                     }
                                     else{

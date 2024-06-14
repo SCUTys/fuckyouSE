@@ -50,7 +50,7 @@ def spider_product(cookie, content, page_num=2):
         response = requests.get(url=new_url, headers=header)
 
         html_data = response.text
-        # print(html_data)
+        print(html_data)
         selector = parsel.Selector(html_data)
 
         goods.extend(selector.xpath('//div[@class="gl-i-wrap"]'))
