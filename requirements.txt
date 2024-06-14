@@ -12,3 +12,7 @@ matplotlib
 dashscope
 pypandoc
 snownlp
+
+#taobao
+pymongo
+selenium
