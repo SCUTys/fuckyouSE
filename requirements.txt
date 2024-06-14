@@ -1,5 +1,4 @@
 Django==4.1
-openpyxl
 xlrd
 imageio
 jieba
@@ -12,7 +11,3 @@ matplotlib
 dashscope
 pypandoc
 snownlp
-
-#taobao
-pymongo
-selenium
