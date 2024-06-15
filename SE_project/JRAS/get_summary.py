@@ -29,6 +29,7 @@ def dispatch_replicate_api_requests(prompt_list):
                 )
                 break
             except Exception as e:
+                print(f'Error {e}')
                 output = []
                 break
                 # print(f'Error {e}, retry at {time.ctime()}', flush=True)
@@ -61,6 +62,7 @@ def get_summary(database_loc, product_id=None):
     contents += '请获取评论中出现的优缺点，并使用优点：{}；缺点：{}的格式进行总结。必须使用简体中文进行回复。不要在回复中出现任何英文单词。'
     contents = [contents]
     responses = dispatch_replicate_api_requests(contents)
+    print("LLM response: ",responses)
     return responses
 
 

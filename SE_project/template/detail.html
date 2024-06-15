@@ -10,20 +10,21 @@
     <script src="/static/js/echarts.js"></script>
         <link rel="stylesheet" href="/static/styleforsearch.css">
     <link rel="stylesheet" href="/static/styleforload.css">
+    <link rel="stylesheet"  type="text/css" href="/static/style copy.css">
     <script type="text/javascript" src="/static/js/jquery-3.2.1.js"></script>
 </head>
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
             <div class="container">
-    
+
                 <a href="#" class="navbar-brand">钢铁直男の5G手机爬虫乐园</a>
-    
+
                 <!-- Toggler Button -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-    
+        <button class="navbar-toggler btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
                 <!-- Navbar Collapse -->
                 <div class="collapse navbar-collapse" id="navmenu">
                     <ul class="navbar-nav ms-auto">
@@ -39,8 +40,8 @@
                     </li>
 
                         <!-- Dropdown Menu for Small Screens -->
-                        <li class="nav-item dropdown d-lg-none">
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li class="dropdown">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <li><a class="dropdown-item" href="/test-mainwindow/">返回主页</a></li>
                                 <li><a class="dropdown-item" href="/compare/">对比</a></li>
                                 <li><a class="dropdown-item" href="#" onclick="window.history.back();">返回上一页</a></li>
@@ -107,7 +108,7 @@
 
 
     <section class="p-5">
-        <div class="container",id="llmdiv">
+        <div class="container" id="llmdiv">
         <button type="button" class="btn btn-primary" id="LLM" disabled="true">等待评论爬取</button>
 
         </div>
@@ -130,8 +131,11 @@
                        window.alert("大模型总结失败,请检查输入的token后重试");
 
                             }
-                            else
-                            $('#llmdiv').append('<h2>'+data.result+'</h2>')
+                            else{
+                                window.alert("大模型总结成功");
+                                $('#llmdiv').append('<h2>'+data.result+'</h2>')
+                                }
+
                         }
                     });
                 });
@@ -302,60 +306,60 @@
                         poll_task();
                     </script>
 
-                <script>
-                    var myChart = echarts.init(document.getElementById('echart-container'));
+<!--                <script>-->
+<!--                    var myChart = echarts.init(document.getElementById('echart-container'));-->
 
-    // 指定图表的配置项和数据
-    var option = {
-        title: {
-            text: '评论分布',
-            subtext: '正面、中立与负面',
-            left: 'center'
-        },
-        tooltip: {
-            trigger: 'item'
-        },
-        legend: {
-            orient: 'vertical',
-            left: 'left'
-        },
-        series: [
-            {
-                name: '评论数',
-                type: 'pie',
-                radius: ['40%', '70%'],
-                avoidLabelOverlap: false,
-                label: {
-                    show: false,
-                    position: 'center'
-                },
-                emphasis: {
-                    label: {
-                        show: true,
-                        fontSize: '30',
-                        fontWeight: 'bold'
-                    }
-                },
-                labelLine: {
-                    show: false
-                },
-                data: [
-                    {value: 30, name: '正面评论'},
-                    {value: 30, name: '中立评论'},
-                    {value: 30, name: '负面评论'}
-                ]
-            }
-        ]
-    };
-    myChart.setOption(option);
-                </script>
+<!--    // 指定图表的配置项和数据-->
+<!--    var option = {-->
+<!--        title: {-->
+<!--            text: '评论分布',-->
+<!--            subtext: '正面、中立与负面',-->
+<!--            left: 'center'-->
+<!--        },-->
+<!--        tooltip: {-->
+<!--            trigger: 'item'-->
+<!--        },-->
+<!--        legend: {-->
+<!--            orient: 'vertical',-->
+<!--            left: 'left'-->
+<!--        },-->
+<!--        series: [-->
+<!--            {-->
+<!--                name: '评论数',-->
+<!--                type: 'pie',-->
+<!--                radius: ['40%', '70%'],-->
+<!--                avoidLabelOverlap: false,-->
+<!--                label: {-->
+<!--                    show: false,-->
+<!--                    position: 'center'-->
+<!--                },-->
+<!--                emphasis: {-->
+<!--                    label: {-->
+<!--                        show: true,-->
+<!--                        fontSize: '30',-->
+<!--                        fontWeight: 'bold'-->
+<!--                    }-->
+<!--                },-->
+<!--                labelLine: {-->
+<!--                    show: false-->
+<!--                },-->
+<!--                data: [-->
+<!--                    {value: 30, name: '正面评论'},-->
+<!--                    {value: 30, name: '中立评论'},-->
+<!--                    {value: 30, name: '负面评论'}-->
+<!--                ]-->
+<!--            }-->
+<!--        ]-->
+<!--    };-->
+<!--    myChart.setOption(option);-->
+<!--                </script>-->
 
             </div>
         </div>
     </section>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"-->
+<!--        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"-->
+<!--        crossorigin="anonymous"></script>-->
 </body>
 </html>

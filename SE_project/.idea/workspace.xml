@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feab3b9e-34ff-47e5-82c2-f2c5b761f07d" name="更改" comment="compare实现">
+    <list default="true" id="feab3b9e-34ff-47e5-82c2-f2c5b761f07d" name="更改" comment="compare差一点样式">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JRAS/data/output_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/JRAS/data/output_n.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JRAS/data/output_p.png" beforeDir="false" afterPath="$PROJECT_DIR$/JRAS/data/output_p.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JRAS/get_summary.py" beforeDir="false" afterPath="$PROJECT_DIR$/JRAS/get_summary.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jd_comments.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/jd_comments.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/compare.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/compare.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/test-mainwindow.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/test-mainwindow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/searchresult.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/searchresult.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +140,21 @@
       <option name="project" value="LOCAL" />
       <updated>1718429548818</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="compare差一点样式">
+      <created>1718430709046</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718430709046</updated>
+    </task>
+    <task id="LOCAL-00005" summary="compare差一点样式">
+      <created>1718430796475</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1718430796475</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +174,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="加入summary" />
     <MESSAGE value="compare实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="compare实现" />
+    <MESSAGE value="compare差一点样式" />
+    <option name="LAST_COMMIT_MESSAGE" value="compare差一点样式" />
   </component>
 </project>
