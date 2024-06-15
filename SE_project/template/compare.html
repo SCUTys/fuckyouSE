@@ -53,169 +53,43 @@
 
 
     <div class="container" style="max-width: 1200px;">
-        <table class="table table-hover table-bordered table-responsive">
-            <thead class="self-fixed">
-                <tr>
-                     {% for name in namelist %}
-                    <th scope="col" class="col-lg-1">#</th>
-                    <th scope="col" class="col-lg-2">
-                        {{name}}
-                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>
-                    </th>
-                    {% endfor %}
-<!--                    <th scope="col" class="col-lg-2">-->
-<!--                        华为pura70Ultra-->
-<!--                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>-->
-<!--                    </th>-->
-<!--                    <th scope="col" class="col-lg-2">-->
-<!--                        荣耀100pro-->
-<!--                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>-->
-<!--                    </th>-->
-<!--                    <th scope="col" class="col-lg-2">-->
-<!--                        小米RedmiTurbo3-->
-<!--                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>-->
-<!--                    </th>-->
-<!--                    <th scope="col" class="col-lg-2">-->
-<!--                        OPPOReno12Pro-->
-<!--                        <button type="button" class="btn-close" aria-label="关闭" data-bs-toggle="tooltip" data-bs-placement="top"></button>-->
-<!--                    </th>-->
-                    <th scope="col" class="col-lg-1">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-<!--                            <label class="form-check-label" for="flexSwitchCheckDefault">只看差异</label>-->
-                          </div>
-                    </th>
-                    
-                </tr>
-            </thead>
+        <table>
             <tbody>
-            {% for info in infos %}
+            <tr class="table-selfdefined">
+                 {% for info in infos %}
+                <td>
+                   {{ info.phone_name}}
+                </td>
+                {% endfor %}
+            </tr>
+            <tr class="table-selfdefined">
+                {% for info in infos %}
+                <td>
+                    <table>
+                        <tbody>
+                    {% for key,value in info.details.items %}
+                    {% if key != "" and value != "" %}
                 <tr class="table-selfdefined">
-                            {% for key,value in info.details.items %}
-                                {% if key != "" and value != "" %}
-                                    <tr class="table-selfdefined">
-                                        <th scope="row">{{key}}</th>
-                                        <td>{{value}}</td>
-                                    </tr>
-
-                                {% endif %}
-
-                            {% endfor %}
-                            <th scope="row">操作</th>
-                            <td id="button_td">
+                     <td>
+                         {{key}}
+                     </td>
+                     <td>
+                         {{value}}
+                     </td>
+                    </tr>
+                    {% endif %}
+                        {% endfor %}
+                        <td id="button_td">
                                 <button type="button" class="btn btn-primary" id={{ info.phone_id }}>删除</button>
-                            </td>
-            {% endfor %}
-
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">价格</th>-->
-<!--                    {% for price in prices %}-->
-<!--                    <td>{{price}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">屏幕尺寸</th>-->
-<!--                    {% for screenSize in screenSizes %}-->
-<!--                    <td>{{screenSize}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">屏幕分辨率</th>-->
-<!--                    {% for screenResolution in screenResolutions %}-->
-<!--                    <td>{{screenResolution}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">屏幕刷新率</th>-->
-<!--                    {% for refreshrate in refreshrates %}-->
-<!--                    <td>{{refreshrate}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">运行内存</th>-->
-<!--                    {% for memory in memorys %}-->
-<!--                    <td>{{memory}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">机身内存</th>-->
-<!--                    {% for storage in storages %}-->
-<!--                    <td>{{storage}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">前置摄像头</th>-->
-<!--                   {% for cameraFront in cameraFronts %}-->
-<!--                    <td>{{cameraFront}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">后置摄像头</th>-->
-<!--                    {% for cameraBack in cameraBacks %}-->
-<!--                    <td>{{cameraBack}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">电池容量</th>-->
-<!--                    {% for batteryCapacity in batteryCapacitys %}-->
-<!--                    <td>{{batteryCapacity}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">充电功率</th>-->
-<!--                    {% for chargingPower in chargingPowers %}-->
-<!--                    <td>{{chargingPower}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">无线充电</th>-->
-<!--                    {% for chargingPowerWireless in chargingPowerWirelesss %}-->
-<!--                    <td>{{chargingPowerWireless}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--&lt;!&ndash;                <tr class="table-selfdefined">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <th scope="row">价格</th>&ndash;&gt;-->
-<!--&lt;!&ndash;                  {% for price in pricelist %}&ndash;&gt;-->
-<!--&lt;!&ndash;                    <td>{{price}}</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                    {% endfor %}&ndash;&gt;-->
-<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">CPU</th>-->
-<!--                   {% for cpu in cpus %}-->
-<!--                    <td>{{cpu}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">操作系统</th>-->
-<!--                    {% for operatingSys in operatingSyss %}-->
-<!--                    <td>{{operatingSys}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">上市时间</th>-->
-<!--                   {% for availability in availabilitys %}-->
-<!--                    <td>{{availability}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">颜色</th>-->
-<!--                    {% for color in colors %}-->
-<!--                    <td>{{color}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">好评率</th>-->
-<!--                    {% for positiveRate in positiveRates %}-->
-<!--                    <td>{{positiveRate}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>-->
-<!--                <tr class="table-selfdefined">-->
-<!--                    <th scope="row">近期销量</th>-->
-<!--                    {% for sales in saless %}-->
-<!--                    <td>{{sales}}</td>-->
-<!--                    {% endfor %}-->
-<!--                </tr>                   -->
+                        </td>
+                        <tbody>
+                    </table>
+                </td>
+                {% endfor %}
+            </tr>
             </tbody>
+            <!-- ... -->
+        </table>
             <script>
                 // 删除按钮
                 $('#button_td').on('click', 'button.btn', function () {
@@ -239,8 +113,7 @@
                 });
 
             </script>
-        </table>
-    </div>    
+    </div>
 
 
     <!-- Bootstrap Bundle JS（包括Popper） -->
