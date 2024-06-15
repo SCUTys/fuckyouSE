@@ -34,18 +34,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/test-mainwindow/">返回主页</a>
                     </li>
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" href="#">登录/注册</a>-->
-<!--                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="window.history.back();">返回上一页</a>
+                    </li>
 
-                    <!-- Dropdown Menu for Small Screens -->
-                    <!-- <li class="dropdown"> -->
-<!--                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
-<!--                            <li><a class="dropdown-item" href="#">返回上一页面</a></li>-->
-<!--                            <li><a class="dropdown-item" href="#">返回主页</a></li>-->
-<!--                            <li><a class="dropdown-item" href="#">登录/注册</a></li>-->
-<!--                        </ul>-->
-                    <!-- </li> -->
+<!--                     Dropdown Menu for Small Screens -->
+                     <li class="dropdown">
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#" onclick="window.history.back();">返回上一页面</a></li>
+                            <li><a class="dropdown-item" href="/test-mainwindow/">返回主页</a></li>
+
+                        </ul>
+                     </li>
                 </ul>
             </div>
         </div>
@@ -78,11 +78,15 @@
                      </td>
                     </tr>
                     {% endif %}
+
                         {% endfor %}
+
                         <td id="button_td">
                                 <button type="button" class="btn btn-primary" id={{ info.phone_id }}>删除</button>
                         </td>
+
                         <tbody>
+
                     </table>
                 </td>
                 {% endfor %}
@@ -91,26 +95,31 @@
             <!-- ... -->
         </table>
             <script>
-                // 删除按钮
-                $('#button_td').on('click', 'button.btn', function () {
-                    // 获取被点击的按钮的id
-                    var id = $($(this)[0]).attr('id');
+                $(document).ready(function() {
+    // 遍历所有的删除按钮
+    $("button.btn.btn-primary").each(function() {
+        // 为每个按钮绑定点击事件
+        $(this).click(function() {
+            // 获取被点击的按钮的id
+            var id = $(this).attr('id');
 
-                    // 发送post请求
-                    $.ajax({
-                        url: '/delete_compare/',
-                        type: 'POST',
-                        data: {
-                            'phone_id': id
-                        },
-                        success: function (data) {
-                            if(data.status == true)
-                            window.location.href = "/compare/";
-                            else
-                            window.alert("删除失败");
-                        }
-                    });
-                });
+            // 发送post请求
+            $.ajax({
+                url: '/delete_compare/',
+                type: 'POST',
+                data: {
+                    'phone_id': id
+                },
+                success: function (data) {
+                    if(data.status == true)
+                        window.location.href = "/compare/";
+                    else
+                        window.alert("删除失败");
+                }
+            });
+        });
+    });
+});
 
             </script>
     </div>
